@@ -8,6 +8,8 @@ export const SIGNUP_URL = '/signup';
 export const PROFILE_URL = '/profile';
 export const PROFILE_EDIT_URL = '/profile/edit';
 export const PROFILE_EDIT_PASS_URL = '/profile/edit/password';
+export const PROFILE_RESET_PASS_URL = '/profile/reset/password';
+export const PROFILE_NEW_PASS_URL = '/profile/new/password/:token';
 export const MAIN_URL = '/';
 
 export const STORE_TOKEN_NAME = 'jwt';

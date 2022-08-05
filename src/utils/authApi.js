@@ -48,6 +48,33 @@ export class Auth {
     return null;
   }
 
+  async resetPassword({ email }) {
+    const res = await fetch(`${this.options.baseUrl}/reset/password`, {
+      method: 'POST',
+      headers: {
+        ...this.options.headers,
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    return this.checkResponse(res);
+  }
+
+  async newPassword({ password, token }) {
+    const res = await fetch(`${this.options.baseUrl}/reset/password`, {
+      method: 'PATCH',
+      headers: {
+        ...this.options.headers,
+      },
+      body: JSON.stringify({
+        password,
+        token,
+      }),
+    });
+    return this.checkResponse(res);
+  }
+
   async getUser() {
     const res = await fetch(`${this.options.baseUrl}/users/me`, {
       headers: {
@@ -88,8 +115,7 @@ export class Auth {
         ...this.options.headers,
       },
     });
-    // console.log(res);
-    return !!res.ok;
+    return this.checkResponse(res);
   }
 
   async patchPassword({ password, newPassword, email }) {

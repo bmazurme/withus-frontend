@@ -2,18 +2,12 @@ import React from 'react';
 import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
 import Logo from '../../components/Logo/Logo';
-import Popup from '../../components/Popup/Popup';
 import SignFooter from './SignFooter';
-import useFormWithValidation from '../../utils/validator';
+import useFormWithValidation from '../../utils/validator.ts';
 import { EMAIL_REGEXP, SIGNIN_URL } from '../../utils/constants';
 
 function Signup(props) {
-  const {
-    handleSignUp,
-    isOpen,
-    onClose,
-    text,
-  } = props;
+  const { handleSignUp } = props;
 
   const {
     values,
@@ -73,7 +67,7 @@ function Signup(props) {
             maxLength={20}
             required
           />
-          <Inbox
+          {/* <Inbox
             onChange={handleChange}
             label="Confirm password"
             errors={errors}
@@ -85,7 +79,7 @@ function Signup(props) {
             minLength={6}
             maxLength={20}
             required
-          />
+          /> */}
           <Button
             value="Зарегистрироваться"
             className="button_submit"
@@ -96,15 +90,10 @@ function Signup(props) {
           text="Уже зарегистрированы?"
           link={{
             url: SIGNIN_URL,
-            label: 'Войти',
+            label: 'SignIn',
           }}
         />
       </div>
-      <Popup
-        onClose={onClose}
-        text={text}
-        isOpen={isOpen}
-      />
     </section>
   );
 }

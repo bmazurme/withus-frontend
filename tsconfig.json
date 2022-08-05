@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["./src/**/*", "src/server.js"],
+  "exclude": ["./dist"],
+  "overrides": [{
+    "files": ["*.ts", "*.tsx"],
+  }],
+}

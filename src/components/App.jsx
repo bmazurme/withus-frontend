@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Route,
   Routes,
@@ -10,13 +10,16 @@ import auth from '../utils/authApi';
 
 import Signup from '../pages/Sign/Signup';
 import Signin from '../pages/Sign/Signin';
+import ProfileResetPass from '../pages/Profile/ProfileResetPass';
 import Profile from '../pages/Profile/Profile';
 import ProfileEdit from '../pages/Profile/ProfileEdit';
 import ProfilePass from '../pages/Profile/ProfilePass';
+import ProfileNewPass from '../pages/Profile/ProfileNewPass';
 import Main from '../pages/Main/Main';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import SignConfirm from '../pages/Sign/SignConfirm';
 import ProtectedRoute from './ProtectedRoute';
+import Popup from './Popup/Popup';
 
 import { CurrentUserContext } from '../context/CurrentUserContext';
 
@@ -29,6 +32,8 @@ import {
   STORE_TOKEN_NAME,
   ERROR_TITLE_DEFAULT,
   PROFILE_EDIT_PASS_URL,
+  PROFILE_RESET_PASS_URL,
+  PROFILE_NEW_PASS_URL,
 } from '../utils/constants';
 
 function App() {
@@ -38,6 +43,7 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [textMessage, setTextMessage] = React.useState({ title: '', description: '' });
+  const mountedRef = useRef(false);
 
   const handleUpdateUser = async ({ email, name }) => {
     try {
@@ -87,6 +93,45 @@ function App() {
     }
   };
 
+  const handleNewPassword = async ({ password, token }) => {
+    try {
+      await auth.newPassword({ password, token });
+      setIsOpen(true);
+      setTextMessage({
+        title: 'ERROR_TITLE_DEFAULT',
+        description: 'пароль был обновлен',
+      });
+      navigate(SIGNIN_URL);
+    } catch (error) {
+      setIsOpen(true);
+      setTextMessage({
+        title: ERROR_TITLE_DEFAULT,
+        description: 'error',
+      });
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  };
+
+  const handleResetPassword = async ({ email }) => {
+    try {
+      await auth.resetPassword({ email });
+      setIsOpen(true);
+      setTextMessage({
+        title: 'письмо было отправлено',
+        description: 'пожалуйста проверте ваш почтовый ящик',
+      });
+    } catch (error) {
+      setIsOpen(true);
+      setTextMessage({
+        title: ERROR_TITLE_DEFAULT,
+        description: 'error',
+      });
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  };
+
   const closePopup = () => {
     setIsOpen(false);
     setTextMessage({ title: '', description: '' });
@@ -123,15 +168,18 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    mountedRef.current = true;
     const jwt = localStorage.getItem(STORE_TOKEN_NAME);
-    checkToken(jwt);
+    return () => {
+      checkToken(jwt);
+      mountedRef.current = false;
+    };
   }, []);
 
   const handleSignIn = async ({ email, password }) => {
     try {
       const result = await auth.signIn({ email, password });
-      setLoggedIn(true);
       localStorage.setItem(STORE_TOKEN_NAME, result.token);
       checkToken(result.token);
       navigate(PROFILE_URL);
@@ -189,9 +237,6 @@ function App() {
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfileEdit
                 handleUpdateUser={handleUpdateUser}
-                isOpen={isOpen}
-                onClose={closePopup}
-                text={textMessage}
               />
             </ProtectedRoute>
           )}
@@ -202,11 +247,16 @@ function App() {
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfilePass
                 handleUpdatePassword={handleUpdatePassword}
-                isOpen={isOpen}
-                onClose={closePopup}
-                text={textMessage}
               />
             </ProtectedRoute>
+          )}
+        />
+        <Route
+          path={PROFILE_NEW_PASS_URL}
+          element={(
+            <ProfileNewPass
+              handleNewPassword={handleNewPassword}
+            />
           )}
         />
         <Route
@@ -219,9 +269,6 @@ function App() {
           path={SIGNUP_URL}
           element={(
             <Signup
-              isOpen={isOpen}
-              onClose={closePopup}
-              text={textMessage}
               handleSignUp={handleSignUp}
             />
           )}
@@ -231,10 +278,16 @@ function App() {
           path={SIGNIN_URL}
           element={(
             <Signin
-              isOpen={isOpen}
-              onClose={closePopup}
-              text={textMessage}
               handleSignIn={handleSignIn}
+            />
+          )}
+        />
+        <Route
+          exact
+          path={PROFILE_RESET_PASS_URL}
+          element={(
+            <ProfileResetPass
+              handleResetPassword={handleResetPassword}
             />
           )}
         />
@@ -252,6 +305,11 @@ function App() {
           element={<PageNotFound />}
         />
       </Routes>
+      <Popup
+        isOpen={isOpen}
+        onClose={closePopup}
+        text={textMessage}
+      />
     </CurrentUserContext.Provider>
   );
 }

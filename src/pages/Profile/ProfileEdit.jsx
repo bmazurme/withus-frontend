@@ -4,9 +4,8 @@ import Logo from '../../components/Logo/Logo';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
-import Popup from '../../components/Popup/Popup';
-import useFormWithValidation from '../../utils/validator';
-import { EMAIL_REGEXP } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator.ts';
+import { EMAIL_REGEXP, PROFILE_URL } from '../../utils/constants';
 
 function ProfileEdit(props) {
   const {
@@ -15,14 +14,10 @@ function ProfileEdit(props) {
     isValid,
     handleChange,
   } = useFormWithValidation();
+
   const currentUser = useContext(CurrentUserContext);
   const { name, email } = currentUser;
-  const {
-    handleUpdateUser,
-    isOpen,
-    onClose,
-    text,
-  } = props;
+  const { handleUpdateUser } = props;
 
   useEffect(() => {
     values.name = currentUser.name;
@@ -41,7 +36,7 @@ function ProfileEdit(props) {
     <section className="profile">
       <Logo />
       <h2 className="profile__title">
-        {`Редактировать профиль, ${name}`}
+        Edit profile
       </h2>
       <form onSubmit={handleSubmit}>
         <Inbox
@@ -82,15 +77,10 @@ function ProfileEdit(props) {
       <ul className="profile__links">
         <Link
           className="profile__link"
-          to="/profile"
-          label="Назад"
+          to={PROFILE_URL}
+          label="Back"
         />
       </ul>
-      <Popup
-        isOpen={isOpen}
-        onClose={onClose}
-        text={text}
-      />
     </section>
   );
 }

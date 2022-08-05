@@ -4,8 +4,7 @@ import Logo from '../../components/Logo/Logo';
 import Link from '../../components/Link/Link';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
-import Popup from '../../components/Popup/Popup';
-import useFormWithValidation from '../../utils/validator';
+import useFormWithValidation from '../../utils/validator.ts';
 
 function ProfilePass(props) {
   const {
@@ -14,14 +13,10 @@ function ProfilePass(props) {
     isValid,
     handleChange,
   } = useFormWithValidation();
+
   const currentUser = useContext(CurrentUserContext);
   const { name, email } = currentUser;
-  const {
-    handleUpdatePassword,
-    isOpen,
-    onClose,
-    text,
-  } = props;
+  const { handleUpdatePassword } = props;
 
   useEffect(() => {
     values.password = currentUser.password;
@@ -41,7 +36,7 @@ function ProfilePass(props) {
     <section className="profile">
       <Logo />
       <h2 className="profile__title">
-        {`Редактировать pass, ${name}`}
+        Edit password
       </h2>
       <form onSubmit={handleSubmit}>
         <Inbox
@@ -72,9 +67,9 @@ function ProfilePass(props) {
           required
         />
 
-        <Inbox
+        {/* <Inbox
           label="Confirm password"
-          name="cobPassword"
+          name="conPassword"
           type="password"
           id="name-input"
           autoComplete="off"
@@ -84,7 +79,7 @@ function ProfilePass(props) {
           minLength={6}
           maxLength={20}
           required
-        />
+        /> */}
 
         <Button
           type="submit"
@@ -96,6 +91,7 @@ function ProfilePass(props) {
           value="Сохранить"
         />
       </form>
+
       <ul className="profile__links">
         <Link
           className="profile__link"
@@ -103,11 +99,6 @@ function ProfilePass(props) {
           label="Назад"
         />
       </ul>
-      <Popup
-        isOpen={isOpen}
-        onClose={onClose}
-        text={text}
-      />
     </section>
   );
 }

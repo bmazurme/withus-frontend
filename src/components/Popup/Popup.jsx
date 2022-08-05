@@ -4,7 +4,6 @@ function Popup(props) {
   const { onClose, text, isOpen } = props;
   return (
     <div
-      // onClick={(e) => (e.currentTarget === e.target) && onClose()}
       className={`popup popup_tooltip ${isOpen ? 'popup_active' : ''}`}
     >
       <div className="popup__container">

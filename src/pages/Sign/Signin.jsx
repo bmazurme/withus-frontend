@@ -2,10 +2,9 @@ import React from 'react';
 import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
 import Logo from '../../components/Logo/Logo';
-import Popup from '../../components/Popup/Popup';
 import SignFooter from './SignFooter';
-import useFormWithValidation from '../../utils/validator';
-import { EMAIL_REGEXP, SIGNUP_URL } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator.ts';
+import { EMAIL_REGEXP, SIGNUP_URL, PROFILE_RESET_PASS_URL } from '../../utils/constants';
 
 function Signin(props) {
   const {
@@ -15,12 +14,7 @@ function Signin(props) {
     handleChange,
   } = useFormWithValidation();
 
-  const {
-    handleSignIn,
-    isOpen,
-    onClose,
-    text,
-  } = props;
+  const { handleSignIn } = props;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -72,22 +66,17 @@ function Signin(props) {
           text="Еще не зарегистрированы?"
           link={{
             url: SIGNUP_URL,
-            label: 'Регистрация',
+            label: 'SignUp',
           }}
         />
         <SignFooter
           text="Забыли пароль?"
           link={{
-            url: SIGNUP_URL,
-            label: 'Сбросить',
+            url: PROFILE_RESET_PASS_URL,
+            label: 'Reset',
           }}
         />
       </div>
-      <Popup
-        isOpen={isOpen}
-        onClose={onClose}
-        text={text}
-      />
     </section>
   );
 }
