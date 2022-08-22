@@ -3,8 +3,8 @@ import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
 import Logo from '../../components/Logo/Logo';
 import SignFooter from './SignFooter';
-import useFormWithValidation from '../../utils/validator.ts';
-import { EMAIL_REGEXP, SIGNUP_URL, PROFILE_RESET_PASS_URL } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator';
+import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
 function Signin(props) {
   const {
@@ -65,14 +65,14 @@ function Signin(props) {
         <SignFooter
           text="Еще не зарегистрированы?"
           link={{
-            url: SIGNUP_URL,
+            url: Urls.SIGNUP,
             label: 'SignUp',
           }}
         />
         <SignFooter
           text="Забыли пароль?"
           link={{
-            url: PROFILE_RESET_PASS_URL,
+            url: Urls.PROFILE_RESET_PASS,
             label: 'Reset',
           }}
         />

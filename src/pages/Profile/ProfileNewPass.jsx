@@ -4,8 +4,8 @@ import Logo from '../../components/Logo/Logo';
 import Inbox from '../../components/Inbox/Inbox';
 import Link from '../../components/Link/Link';
 import Button from '../../components/Button/Button';
-import { SIGNIN_URL } from '../../utils/constants';
-import useFormWithValidation from '../../utils/validator.ts';
+import { Urls } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator';
 
 function ProfileNewPass(props) {
   const params = useParams();
@@ -67,7 +67,7 @@ function ProfileNewPass(props) {
         <ul className="profile__links">
           <Link
             className="profile__link"
-            to={SIGNIN_URL}
+            to={Urls.SIGNIN}
             label="SignIn"
           />
         </ul>

@@ -24,16 +24,9 @@ import Popup from './Popup/Popup';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 
 import {
-  SIGNIN_URL,
-  SIGNUP_URL,
-  PROFILE_URL,
-  PROFILE_EDIT_URL,
-  MAIN_URL,
+  Urls,
   STORE_TOKEN_NAME,
   ERROR_TITLE_DEFAULT,
-  PROFILE_EDIT_PASS_URL,
-  PROFILE_RESET_PASS_URL,
-  PROFILE_NEW_PASS_URL,
 } from '../utils/constants';
 
 function App() {
@@ -101,7 +94,7 @@ function App() {
         title: 'ERROR_TITLE_DEFAULT',
         description: 'пароль был обновлен',
       });
-      navigate(SIGNIN_URL);
+      navigate(Urls.SIGNIN);
     } catch (error) {
       setIsOpen(true);
       setTextMessage({
@@ -142,7 +135,7 @@ function App() {
     localStorage.removeItem(STORE_TOKEN_NAME);
     setLoggedIn(false);
     setCurrentUser({});
-    navigate(MAIN_URL);
+    navigate(Urls.MAIN);
   };
 
   const checkToken = (jwt) => {
@@ -154,9 +147,9 @@ function App() {
             setCurrentUser(res);
             setLoggedIn(true);
 
-            if (location.pathname === SIGNIN_URL
-              || location.pathname === SIGNUP_URL) {
-              navigate(PROFILE_URL);
+            if (location.pathname === Urls.SIGNIN
+              || location.pathname === Urls.SIGNUP) {
+              navigate(Urls.PROFILE);
             }
           }
         })
@@ -182,7 +175,7 @@ function App() {
       const result = await auth.signIn({ email, password });
       localStorage.setItem(STORE_TOKEN_NAME, result.token);
       checkToken(result.token);
-      navigate(PROFILE_URL);
+      navigate(Urls.PROFILE);
     } catch (error) {
       if (error.message === 'Ошибка 401') {
         setIsOpen(true);
@@ -204,7 +197,7 @@ function App() {
         description: `пожалуйста подтвердите ваш email, для ${result.name}`,
       });
       setIsOpen(true);
-      navigate(SIGNIN_URL);
+      navigate(Urls.SIGNIN);
     } catch (error) {
       if (error.message === 'Ошибка 409') {
         setIsOpen(true);
@@ -222,7 +215,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route
-          path={PROFILE_URL}
+          path={Urls.PROFILE}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile
@@ -232,7 +225,7 @@ function App() {
           )}
         />
         <Route
-          path={PROFILE_EDIT_URL}
+          path={Urls.PROFILE_EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfileEdit
@@ -242,7 +235,7 @@ function App() {
           )}
         />
         <Route
-          path={PROFILE_EDIT_PASS_URL}
+          path={Urls.PROFILE_EDIT_PASS}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfilePass
@@ -252,7 +245,7 @@ function App() {
           )}
         />
         <Route
-          path={PROFILE_NEW_PASS_URL}
+          path={Urls.PROFILE_NEW_PASS}
           element={(
             <ProfileNewPass
               handleNewPassword={handleNewPassword}
@@ -261,12 +254,12 @@ function App() {
         />
         <Route
           exact
-          path={MAIN_URL}
+          path={Urls.MAIN}
           element={<Main />}
         />
         <Route
           exact
-          path={SIGNUP_URL}
+          path={Urls.SIGNUP}
           element={(
             <Signup
               handleSignUp={handleSignUp}
@@ -275,7 +268,7 @@ function App() {
         />
         <Route
           exact
-          path={SIGNIN_URL}
+          path={Urls.SIGNIN}
           element={(
             <Signin
               handleSignIn={handleSignIn}
@@ -284,7 +277,7 @@ function App() {
         />
         <Route
           exact
-          path={PROFILE_RESET_PASS_URL}
+          path={Urls.PROFILE_RESET_PASS}
           element={(
             <ProfileResetPass
               handleResetPassword={handleResetPassword}

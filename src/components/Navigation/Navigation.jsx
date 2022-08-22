@@ -1,11 +1,6 @@
 import React, { useContext } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-import {
-  PROFILE_URL,
-  MAIN_URL,
-  SIGNIN_URL,
-  SIGNUP_URL,
-} from '../../utils/constants';
+import { Urls } from '../../utils/constants';
 import Link from '../Link/Link';
 
 function Navigation(props) {
@@ -14,24 +9,24 @@ function Navigation(props) {
   const { name } = currentUser;
   return (
     <>
-      <div className={`navigation 
+      <div className={`navigation
         ${isOpen
         ? 'navigation_opened'
         : ''}`}
       >
         <ul className={`navigation__links ${isOpen ? 'navigation__links_opened' : ''}`}>
-          <Link className="navigation__link navigation__link_home" to={MAIN_URL} label="Main" />
+          <Link className="navigation__link navigation__link_home" to={Urls.MAIN} label="Main" />
           {!name
             ? (
               <>
-                <Link className="navigation__link" to={SIGNIN_URL} label="Signin" />
-                <Link className="navigation__link" to={SIGNUP_URL} label="Signup" />
+                <Link className="navigation__link" to={Urls.SIGNIN} label="Signin" />
+                <Link className="navigation__link" to={Urls.SIGNUP} label="Signup" />
               </>
             )
             : null}
           {
             name
-              ? <Link className="navigation__link" to={PROFILE_URL} label={name} />
+              ? <Link className="navigation__link" to={Urls.PROFILE} label={name} />
               : null
           }
         </ul>

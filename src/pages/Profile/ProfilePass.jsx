@@ -4,7 +4,7 @@ import Logo from '../../components/Logo/Logo';
 import Link from '../../components/Link/Link';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
-import useFormWithValidation from '../../utils/validator.ts';
+import useFormWithValidation from '../../utils/validator';
 
 function ProfilePass(props) {
   const {

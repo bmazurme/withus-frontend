@@ -1,5 +1,5 @@
 import React from 'react';
-import { data } from './data.ts';
+import { data } from './data';
 
 const { code, text, link } = data;
 

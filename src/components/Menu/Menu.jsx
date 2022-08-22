@@ -1,25 +1,27 @@
 import React from 'react';
 import Link from '../Link/Link';
-import { MAIN_URL, PROFILE_EDIT_URL, PROFILE_EDIT_PASS_URL } from '../../utils/constants';
+import { Urls } from '../../utils/constants';
 
 function Menu(props) {
   const { handleLogOut } = props;
   const links = [
     {
       className: 'profile__link',
-      to: PROFILE_EDIT_URL,
+      to: Urls.PROFILE_EDIT,
       label: 'Edit profile',
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       handler: () => {},
     },
     {
       className: 'profile__link',
-      to: PROFILE_EDIT_PASS_URL,
+      to: Urls.PROFILE_EDIT_PASS,
       label: 'Edit password',
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       handler: () => {},
     },
     {
       className: 'profile__link profile__link_red',
-      to: MAIN_URL,
+      to: Urls.MAIN,
       label: 'Sign out',
       handler: handleLogOut,
     },

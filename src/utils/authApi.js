@@ -1,4 +1,10 @@
-import { AUTH_URL, STORE_TOKEN_NAME } from './constants';
+import { Urls, STORE_TOKEN_NAME } from './constants';
+
+const Method = {
+  POST: 'POST',
+  PATCH: 'PATCH',
+  GET: 'GET',
+};
 
 export class Auth {
   constructor(options) {
@@ -15,7 +21,7 @@ export class Auth {
 
   async signUp({ email, password, name }) {
     const res = await fetch(`${this.options.baseUrl}/signup`, {
-      method: 'POST',
+      method: Method.POST,
       headers: {
         ...this.options.headers,
         Accept: 'application/json',
@@ -31,7 +37,7 @@ export class Auth {
 
   async signIn({ email, password }) {
     const res = await fetch(`${this.options.baseUrl}/signin`, {
-      method: 'POST',
+      method: Method.POST,
       headers: {
         ...this.options.headers,
       },
@@ -50,7 +56,7 @@ export class Auth {
 
   async resetPassword({ email }) {
     const res = await fetch(`${this.options.baseUrl}/reset/password`, {
-      method: 'POST',
+      method: Method.POST,
       headers: {
         ...this.options.headers,
       },
@@ -63,7 +69,7 @@ export class Auth {
 
   async newPassword({ password, token }) {
     const res = await fetch(`${this.options.baseUrl}/reset/password`, {
-      method: 'PATCH',
+      method: Method.PATCH,
       headers: {
         ...this.options.headers,
       },
@@ -87,7 +93,7 @@ export class Auth {
 
   async patchUser(user) {
     const res = await fetch(`${this.options.baseUrl}/users/me`, {
-      method: 'PATCH',
+      method: Method.PATCH,
       headers: {
         ...this.options.headers,
         Authorization: `Bearer ${localStorage.getItem(STORE_TOKEN_NAME)}`,
@@ -99,7 +105,7 @@ export class Auth {
 
   async checkToken(token) {
     const res = await fetch(`${this.options.baseUrl}/users/me`, {
-      method: 'GET',
+      method: Method.GET,
       headers: {
         ...this.options.headers,
         Authorization: `Bearer ${token}`,
@@ -110,7 +116,7 @@ export class Auth {
 
   async confirmEmail(token) {
     const res = await fetch(`${this.options.baseUrl}/confirm/${token}`, {
-      method: 'GET',
+      method: Method.GET,
       headers: {
         ...this.options.headers,
       },
@@ -120,7 +126,7 @@ export class Auth {
 
   async patchPassword({ password, newPassword, email }) {
     const res = await fetch(`${this.options.baseUrl}/users/password`, {
-      method: 'PATCH',
+      method: Method.PATCH,
       headers: {
         ...this.options.headers,
         Authorization: `Bearer ${localStorage.getItem(STORE_TOKEN_NAME)}`,
@@ -132,7 +138,7 @@ export class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: AUTH_URL,
+  baseUrl: Urls.AUTH,
   headers: {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${localStorage.getItem(STORE_TOKEN_NAME)}`,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { tags } from './tags.ts';
+import { tags } from './tags';
 import Tag from '../../components/Tag/Tag';
 
 function Techs() {

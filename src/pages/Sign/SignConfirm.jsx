@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Link from '../../components/Link/Link';
 import auth from '../../utils/authApi';
-import { PROFILE_URL, SIGNIN_URL } from '../../utils/constants';
+import { Urls } from '../../utils/constants';
 
 function SignConfirm(props) {
   const params = useParams();
@@ -25,7 +25,7 @@ function SignConfirm(props) {
   }, []);
 
   if (token) {
-    setTimeout(() => (navigate(PROFILE_URL)), 10000);
+    setTimeout(() => (navigate(Urls.PROFILE)), 10000);
   }
 
   return (
@@ -36,7 +36,7 @@ function SignConfirm(props) {
         <ul className="sign__links">
           <Link
             className="sign__link"
-            to={SIGNIN_URL}
+            to={Urls.SIGNIN}
             label="Go to signin"
           />
         </ul>

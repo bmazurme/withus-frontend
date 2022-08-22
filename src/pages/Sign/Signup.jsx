@@ -3,8 +3,8 @@ import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
 import Logo from '../../components/Logo/Logo';
 import SignFooter from './SignFooter';
-import useFormWithValidation from '../../utils/validator.ts';
-import { EMAIL_REGEXP, SIGNIN_URL } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator';
+import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
 function Signup(props) {
   const { handleSignUp } = props;
@@ -89,7 +89,7 @@ function Signup(props) {
         <SignFooter
           text="Уже зарегистрированы?"
           link={{
-            url: SIGNIN_URL,
+            url: Urls.SIGNIN,
             label: 'SignIn',
           }}
         />

@@ -4,8 +4,8 @@ import Logo from '../../components/Logo/Logo';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
-import useFormWithValidation from '../../utils/validator.ts';
-import { EMAIL_REGEXP, PROFILE_URL } from '../../utils/constants';
+import useFormWithValidation from '../../utils/validator';
+import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
 function ProfileEdit(props) {
   const {
@@ -77,7 +77,7 @@ function ProfileEdit(props) {
       <ul className="profile__links">
         <Link
           className="profile__link"
-          to={PROFILE_URL}
+          to={Urls.PROFILE}
           label="Back"
         />
       </ul>
