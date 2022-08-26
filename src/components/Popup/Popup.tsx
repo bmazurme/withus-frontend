@@ -1,7 +1,7 @@
 import React from 'react';
+import { IPopupProps } from './IPopupProps';
 
-function Popup(props) {
-  const { onClose, text, isOpen } = props;
+function Popup({ onClose, text, isOpen }: IPopupProps) {
   return (
     <div
       className={`popup popup_tooltip ${isOpen ? 'popup_active' : ''}`}

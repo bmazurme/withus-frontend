@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
@@ -6,7 +7,18 @@ import SignFooter from './SignFooter';
 import useFormWithValidation from '../../utils/validator';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
-function Signup(props) {
+interface IValid {
+  values: Record<string, string>,
+  errors: Record<string, string>,
+  isValid: boolean,
+  handleChange: any,
+}
+
+interface IProps {
+  handleSignUp: (data: Record<string, string|undefined>) => void,
+}
+
+function Signup(props: IProps) {
   const { handleSignUp } = props;
 
   const {
@@ -14,9 +26,9 @@ function Signup(props) {
     errors,
     isValid,
     handleChange,
-  } = useFormWithValidation();
+  }: IValid = useFormWithValidation();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     handleSignUp({
       email: values.email,
@@ -41,6 +53,10 @@ function Signup(props) {
             errors={errors}
             value={values.name || ''}
             required
+            pattern={''}
+            placeholder={''}
+            minLength={4}
+            maxLength={20}
           />
           <Inbox
             pattern={EMAIL_REGEXP}
@@ -53,6 +69,9 @@ function Signup(props) {
             errors={errors}
             value={values.email || ''}
             required
+            placeholder={''}
+            minLength={4}
+            maxLength={20}
           />
           <Inbox
             onChange={handleChange}
@@ -63,9 +82,11 @@ function Signup(props) {
             id="password-input"
             autoComplete="off"
             value={values.password || ''}
+            placeholder={''}
             minLength={6}
             maxLength={20}
             required
+            pattern={''}
           />
           {/* <Inbox
             onChange={handleChange}
@@ -81,6 +102,7 @@ function Signup(props) {
             required
           /> */}
           <Button
+            typeButton="submit"
             value="Зарегистрироваться"
             className="button_submit"
             isValid={isValid}

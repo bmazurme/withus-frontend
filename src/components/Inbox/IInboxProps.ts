@@ -1,0 +1,15 @@
+export interface IInboxProps {
+  label: string,
+  pattern: string,
+  name: string,
+  placeholder: string,
+  minLength: number,
+  maxLength: number,
+  required: boolean,
+  errors: any,
+  type: string,
+  id: string,
+  autoComplete: string,
+  value: string,
+  onChange: (e: any) => void,
+}

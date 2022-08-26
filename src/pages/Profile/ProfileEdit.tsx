@@ -1,34 +1,45 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React, { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import Logo from '../../components/Logo/Logo';
-import Link from '../../components/Link/Link';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
+import Link from '../../components/Link/Link';
 import useFormWithValidation from '../../utils/validator';
+import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
-function ProfilePass(props) {
+interface IProps {
+  handleUpdateUser: ({ email, name }: Record<string, string>) => void,
+}
+
+interface IValid {
+  values: Record<string, string>,
+  errors: Record<string, string>,
+  isValid: boolean,
+  handleChange: any,
+}
+
+function ProfileEdit({ handleUpdateUser }: IProps) {
   const {
     values,
     errors,
     isValid,
     handleChange,
-  } = useFormWithValidation();
+  }: IValid = useFormWithValidation();
 
   const currentUser = useContext(CurrentUserContext);
   const { name, email } = currentUser;
-  const { handleUpdatePassword } = props;
 
   useEffect(() => {
-    values.password = currentUser.password;
-    values.newPassword = currentUser.newPassword;
+    values.name = currentUser.name;
+    values.email = currentUser.email;
   }, []);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    handleUpdatePassword({
-      password: values.password,
-      newPassword: values.newPassword,
-      email,
+    handleUpdateUser({
+      email: values.email,
+      name: values.name,
     });
   };
 
@@ -36,53 +47,41 @@ function ProfilePass(props) {
     <section className="profile">
       <Logo />
       <h2 className="profile__title">
-        Edit password
+        Edit profile
       </h2>
       <form onSubmit={handleSubmit}>
         <Inbox
-          label="Old password"
-          name="password"
-          type="password"
-          id="password-input"
-          autoComplete="off"
-          onChange={handleChange}
-          errors={errors}
-          value={values.password || ''}
-          minLength={6}
-          maxLength={20}
-          required
-        />
-
-        <Inbox
-          label="New password"
-          name="newPassword"
-          type="password"
-          id="newPassword-input"
-          autoComplete="off"
-          onChange={handleChange}
-          errors={errors}
-          value={values.newPassword || ''}
-          minLength={6}
-          maxLength={20}
-          required
-        />
-
-        {/* <Inbox
-          label="Confirm password"
-          name="conPassword"
-          type="password"
+          label="Name"
+          name="name"
+          type="text"
           id="name-input"
           autoComplete="off"
           onChange={handleChange}
           errors={errors}
-          value={values.newPassword || ''}
-          minLength={6}
+          value={values.name || name}
+          minLength={4}
           maxLength={20}
           required
-        /> */}
-
+          pattern={''}
+          placeholder={''}
+        />
+        <Inbox
+          pattern={EMAIL_REGEXP}
+          label="E-mail"
+          name="email"
+          type="text"
+          id="email-input"
+          autoComplete="off"
+          onChange={handleChange}
+          errors={errors}
+          value={values.email || email}
+          required
+          placeholder={''}
+          minLength={5}
+          maxLength={30}
+        />
         <Button
-          type="submit"
+          typeButton="submit"
           isValid={
             (isValid && values.name !== name)
             || (isValid && values.email !== email)
@@ -91,16 +90,15 @@ function ProfilePass(props) {
           value="Сохранить"
         />
       </form>
-
       <ul className="profile__links">
         <Link
           className="profile__link"
-          to="/profile"
-          label="Назад"
+          to={Urls.PROFILE.INDEX}
+          label="Back"
         />
       </ul>
     </section>
   );
 }
 
-export default ProfilePass;
+export default ProfileEdit;

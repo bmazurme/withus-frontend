@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { Urls } from '../../utils/constants';
 import Link from '../Link/Link';
+import { INavigationProps } from './INavigationProps';
 
-function Navigation(props) {
-  const { isOpen, handlerClick } = props;
+function Navigation({ isOpen, handlerClick }: INavigationProps) {
   const currentUser = useContext(CurrentUserContext);
   const { name } = currentUser;
   return (
@@ -25,9 +25,7 @@ function Navigation(props) {
             )
             : null}
           {
-            name
-              ? <Link className="navigation__link" to={Urls.PROFILE} label={name} />
-              : null
+            name ? <Link className="navigation__link" to={Urls.PROFILE.INDEX} label={name} /> : null
           }
         </ul>
       </div>

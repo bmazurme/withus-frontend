@@ -23,11 +23,7 @@ import Popup from './Popup/Popup';
 
 import { CurrentUserContext } from '../context/CurrentUserContext';
 
-import {
-  Urls,
-  STORE_TOKEN_NAME,
-  ERROR_TITLE_DEFAULT,
-} from '../utils/constants';
+import { Urls, STORE_TOKEN_NAME, ERROR_TITLE_DEFAULT } from '../utils/constants';
 
 function App() {
   const navigate = useNavigate();
@@ -149,7 +145,7 @@ function App() {
 
             if (location.pathname === Urls.SIGNIN
               || location.pathname === Urls.SIGNUP) {
-              navigate(Urls.PROFILE);
+              navigate(Urls.PROFILE.INDEX);
             }
           }
         })
@@ -175,7 +171,7 @@ function App() {
       const result = await auth.signIn({ email, password });
       localStorage.setItem(STORE_TOKEN_NAME, result.token);
       checkToken(result.token);
-      navigate(Urls.PROFILE);
+      navigate(Urls.PROFILE.INDEX);
     } catch (error) {
       if (error.message === 'Ошибка 401') {
         setIsOpen(true);
@@ -215,7 +211,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route
-          path={Urls.PROFILE}
+          path={Urls.PROFILE.INDEX}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile
@@ -225,7 +221,7 @@ function App() {
           )}
         />
         <Route
-          path={Urls.PROFILE_EDIT}
+          path={Urls.PROFILE.EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfileEdit
@@ -235,7 +231,7 @@ function App() {
           )}
         />
         <Route
-          path={Urls.PROFILE_EDIT_PASS}
+          path={Urls.PASSWORD.EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfilePass
@@ -245,7 +241,7 @@ function App() {
           )}
         />
         <Route
-          path={Urls.PROFILE_NEW_PASS}
+          path={Urls.PASSWORD.NEW}
           element={(
             <ProfileNewPass
               handleNewPassword={handleNewPassword}
@@ -277,7 +273,7 @@ function App() {
         />
         <Route
           exact
-          path={Urls.PROFILE_RESET_PASS}
+          path={Urls.PASSWORD.RESET}
           element={(
             <ProfileResetPass
               handleResetPassword={handleResetPassword}
@@ -285,7 +281,7 @@ function App() {
           )}
         />
         <Route
-          path="/confirm/:token"
+          path={Urls.CONFIRM.TOKEN}
           element={(
             <SignConfirm
               navigate={navigate}

@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Field(props) {
-  const { label, value } = props;
+function Field({ label, value }: Record<string, string>) {
   return (
     <div className="field field_border">
       <div className="field__label">{label}</div>

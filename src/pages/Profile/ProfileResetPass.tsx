@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import Logo from '../../components/Logo/Logo';
 import Inbox from '../../components/Inbox/Inbox';
@@ -6,17 +7,26 @@ import Button from '../../components/Button/Button';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 import useFormWithValidation from '../../utils/validator';
 
-function SignReset(props) {
-  const { handleResetPassword } = props;
+interface IValid {
+  values: Record<string, string>,
+  errors: Record<string, string>,
+  isValid: boolean,
+  handleChange: any,
+}
 
+interface IProps {
+  handleResetPassword: ({ password, token }: Record<string, string|undefined>) => void,
+}
+
+function SignReset({ handleResetPassword }: IProps) {
   const {
     values,
     errors,
     isValid,
     handleChange,
-  } = useFormWithValidation();
+  }: IValid = useFormWithValidation();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     handleResetPassword({
       email: values.email,
@@ -39,9 +49,13 @@ function SignReset(props) {
             errors={errors}
             value={values.email || ''}
             required
+            placeholder={''}
+            minLength={6}
+            maxLength={20}
           />
 
           <Button
+            typeButton="submit"
             value="Reset"
             className="button_submit"
             isValid={isValid}

@@ -2,19 +2,20 @@ import React from 'react';
 import Link from '../Link/Link';
 import { Urls } from '../../utils/constants';
 
-function Menu(props) {
-  const { handleLogOut } = props;
+import { IMenu } from './IMenu';
+
+function Menu({ handleLogOut }: IMenu) {
   const links = [
     {
       className: 'profile__link',
-      to: Urls.PROFILE_EDIT,
+      to: Urls.PROFILE.EDIT,
       label: 'Edit profile',
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       handler: () => {},
     },
     {
       className: 'profile__link',
-      to: Urls.PROFILE_EDIT_PASS,
+      to: Urls.PASSWORD.EDIT,
       label: 'Edit password',
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       handler: () => {},
@@ -36,7 +37,7 @@ function Menu(props) {
           className={link.className}
           to={link.to}
           label={link.label}
-          onHandleClick={link.handler}
+          // onHandleClick={link.handler}
         />
       ))}
     </ul>

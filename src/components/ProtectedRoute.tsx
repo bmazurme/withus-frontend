@@ -2,7 +2,12 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Urls } from '../utils/constants';
 
-function ProtectedRoute({ loggedIn, children }) {
+interface IProps {
+  loggedIn: boolean,
+  children: any,
+}
+
+function ProtectedRoute({ loggedIn, children }: IProps) {
   if (!loggedIn) {
     return (
       <Navigate

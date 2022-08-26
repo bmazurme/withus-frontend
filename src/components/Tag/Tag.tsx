@@ -1,7 +1,10 @@
 import React from 'react';
 
-function Tag(props) {
-  const { tag } = props;
+interface IProps {
+  tag: string,
+}
+
+function Tag({ tag }: IProps) {
   return (
     <li className="techs__item">
       {tag}

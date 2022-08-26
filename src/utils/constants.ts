@@ -4,12 +4,19 @@ export const Urls = {
   AUTH: 'http://localhost:3001',
   SIGNIN: '/signin',
   SIGNUP: '/signup',
-  PROFILE: '/profile',
-  PROFILE_EDIT: '/profile/edit',
-  PROFILE_EDIT_PASS: '/profile/edit/password',
-  PROFILE_RESET_PASS: '/profile/reset/password',
-  PROFILE_NEW_PASS: '/profile/new/password/:token',
+  PROFILE: {
+    INDEX: '/profile',
+    EDIT: '/profile/edit',
+  },
+  PASSWORD: {
+    EDIT: '/password/edit',
+    RESET: '/password/reset',
+    NEW: '/password/new/:token',
+  },
   MAIN: '/',
+  CONFIRM: {
+    TOKEN: '/confirm/:token',
+  },
 };
 
 export const STORE_TOKEN_NAME = 'jwt';

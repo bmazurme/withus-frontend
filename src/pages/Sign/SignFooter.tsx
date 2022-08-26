@@ -1,8 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function SignFooter(props) {
-  const { text, link } = props;
+interface IProps {
+  text: string,
+  link: Record<string, string>,
+}
+
+function SignFooter({ text, link }: IProps) {
   return (
     <div className="sign__footer">
       <p className="sign__help">

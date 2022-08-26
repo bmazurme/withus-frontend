@@ -1,10 +1,17 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 
-function Button(props) {
-  const { isValid, className, value } = props;
+import { IButtonProps } from './IButtonProps';
+
+function Button({
+  isValid,
+  className,
+  value,
+  typeButton,
+}: IButtonProps) {
   return (
     <button
-      type="submit"
+      type={typeButton}
       className={`button ${className} ${!isValid ? 'button_inactive' : ''}`}
       disabled={!isValid}
     >

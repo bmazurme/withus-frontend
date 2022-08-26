@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { IInboxProps } from './IInboxProps';
 
-function Inbox(props) {
+function Inbox(props: IInboxProps) {
   const {
     label,
     pattern,
     name,
     placeholder,
-    onChange,
     minLength,
     maxLength,
     required,
@@ -16,6 +16,7 @@ function Inbox(props) {
     id,
     autoComplete,
     value,
+    onChange,
   } = props;
 
   return (
@@ -31,8 +32,8 @@ function Inbox(props) {
             name={name}
             placeholder={placeholder}
             onChange={onChange}
-            minLength={minLength || ''}
-            maxLength={maxLength || ''}
+            minLength={minLength || 6}
+            maxLength={maxLength || 6}
             required={required}
             className={`inbox__input ${errors[name] ? 'inbox__input_error' : ''}`}
             type={type}
@@ -46,8 +47,8 @@ function Inbox(props) {
             name={name}
             placeholder={placeholder}
             onChange={onChange}
-            minLength={minLength || ''}
-            maxLength={maxLength || ''}
+            minLength={minLength || 6}
+            maxLength={maxLength || 6}
             required={required}
             className={`input inbox__input ${errors[name] ? 'inbox__input_error' : ''}`}
             type={type}

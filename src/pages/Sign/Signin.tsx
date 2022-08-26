@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
@@ -6,17 +7,26 @@ import SignFooter from './SignFooter';
 import useFormWithValidation from '../../utils/validator';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 
-function Signin(props) {
+interface IValid {
+  values: Record<string, string>,
+  errors: Record<string, string>,
+  isValid: boolean,
+  handleChange: any,
+}
+
+interface IProps {
+  handleSignIn: ({ password, token }: Record<string, string|undefined>) => void,
+}
+
+function Signin({ handleSignIn }: IProps) {
   const {
     values,
     errors,
     isValid,
     handleChange,
-  } = useFormWithValidation();
+  }: IValid = useFormWithValidation();
 
-  const { handleSignIn } = props;
-
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     handleSignIn({
       email: values.email,
@@ -41,6 +51,9 @@ function Signin(props) {
             errors={errors}
             value={values.email || ''}
             required
+            placeholder={''}
+            minLength={5}
+            maxLength={20}
           />
           <Inbox
             onChange={handleChange}
@@ -54,8 +67,11 @@ function Signin(props) {
             minLength={6}
             maxLength={20}
             required
+            placeholder={''}
+            pattern={''}
           />
           <Button
+            typeButton="submit"
             value="Войти"
             className="button_submit"
             isValid={isValid}
@@ -72,7 +88,7 @@ function Signin(props) {
         <SignFooter
           text="Забыли пароль?"
           link={{
-            url: Urls.PROFILE_RESET_PASS,
+            url: Urls.PASSWORD.RESET,
             label: 'Reset',
           }}
         />

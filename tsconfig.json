@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -18,6 +19,6 @@
   "include": ["./src/**/*", "src/server.js"],
   "exclude": ["./dist"],
   "overrides": [{
-    "files": ["*.ts", "*.tsx"],
+    "files": ["*.ts", "*.tsx", "*.jsx", "*.js"],
   }],
 }

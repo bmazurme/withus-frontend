@@ -4,10 +4,9 @@ import Link from '../../components/Link/Link';
 import auth from '../../utils/authApi';
 import { Urls } from '../../utils/constants';
 
-function SignConfirm(props) {
+function SignConfirm({ navigate }: any) {
   const params = useParams();
   const { token } = params;
-  const { navigate } = props;
   const [message, setMessage] = React.useState('Email was not found');
 
   useEffect(() => {
@@ -25,7 +24,7 @@ function SignConfirm(props) {
   }, []);
 
   if (token) {
-    setTimeout(() => (navigate(Urls.PROFILE)), 10000);
+    setTimeout(() => (navigate(Urls.PROFILE.INDEX)), 10000);
   }
 
   return (

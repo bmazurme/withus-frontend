@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
@@ -7,18 +8,28 @@ import Button from '../../components/Button/Button';
 import { Urls } from '../../utils/constants';
 import useFormWithValidation from '../../utils/validator';
 
-function ProfileNewPass(props) {
+interface IProps {
+  handleNewPassword: ({ password, token }: Record<string, string|undefined>) => void,
+}
+
+interface IValid {
+  values: Record<string, string>,
+  errors: Record<string, string>,
+  isValid: boolean,
+  handleChange: any,
+}
+
+function ProfileNewPass({ handleNewPassword }: IProps) {
   const params = useParams();
   const { token } = params;
-  const { handleNewPassword } = props;
   const {
     values,
     errors,
     isValid,
     handleChange,
-  } = useFormWithValidation();
+  }: IValid = useFormWithValidation();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     handleNewPassword({
       password: values.newPassword,
@@ -44,6 +55,8 @@ function ProfileNewPass(props) {
             minLength={6}
             maxLength={20}
             required
+            pattern={''}
+            placeholder={''}
           />
           {/* <Inbox
             label="Confirm password"
@@ -62,6 +75,7 @@ function ProfileNewPass(props) {
             value="Save"
             className="button_submit"
             isValid={isValid}
+            typeButton="submit"
           />
         </form>
         <ul className="profile__links">

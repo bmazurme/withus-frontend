@@ -12,7 +12,7 @@ function Techs() {
         которые применили в дипломном проекте.
       </p>
       <ul className="techs__list">
-        {tags.map((tag, index) => (
+        {tags.map((tag: string, index: number) => (
           <Tag
             tag={tag}
             // eslint-disable-next-line react/no-array-index-key
