@@ -1,3 +1,3 @@
 export interface IMenu {
-  handleLogOut: () => void,
+  handleLogOut: (e: any) => void,
 }

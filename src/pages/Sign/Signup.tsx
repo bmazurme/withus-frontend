@@ -15,7 +15,7 @@ interface IValid {
 }
 
 interface IProps {
-  handleSignUp: (data: Record<string, string|undefined>) => void,
+  handleSignUp: (data: Record<string, string>) => void,
 }
 
 function Signup(props: IProps) {

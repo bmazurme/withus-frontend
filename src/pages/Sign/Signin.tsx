@@ -15,7 +15,7 @@ interface IValid {
 }
 
 interface IProps {
-  handleSignIn: ({ password, token }: Record<string, string|undefined>) => void,
+  handleSignIn: ({ password, token }: Record<string, string>) => void,
 }
 
 function Signin({ handleSignIn }: IProps) {

@@ -16,7 +16,7 @@ interface IValid {
 }
 
 interface IProps {
-  handleUpdatePassword: ({ password, token }: Record<string, string|undefined>) => void,
+  handleUpdatePassword: ({ password, token }: Record<string, string>) => void,
 }
 
 function ProfilePass({ handleUpdatePassword }: IProps) {

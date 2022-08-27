@@ -9,7 +9,7 @@ import { Urls } from '../../utils/constants';
 import useFormWithValidation from '../../utils/validator';
 
 interface IProps {
-  handleNewPassword: ({ password, token }: Record<string, string|undefined>) => void,
+  handleNewPassword: ({ password, token }: Record<string, string>) => void,
 }
 
 interface IValid {
@@ -33,7 +33,7 @@ function ProfileNewPass({ handleNewPassword }: IProps) {
     evt.preventDefault();
     handleNewPassword({
       password: values.newPassword,
-      token,
+      token: token!,
     });
   };
 

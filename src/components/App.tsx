@@ -28,13 +28,13 @@ import { Urls, STORE_TOKEN_NAME, ERROR_TITLE_DEFAULT } from '../utils/constants'
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState<any>({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [textMessage, setTextMessage] = React.useState({ title: '', description: '' });
   const mountedRef = useRef(false);
 
-  const handleUpdateUser = async ({ email, name }) => {
+  const handleUpdateUser = async ({ email, name }: Record<string, string>) => {
     try {
       const result = await auth.patchUser({ email, name });
       setTextMessage({
@@ -57,7 +57,7 @@ function App() {
     }
   };
 
-  const handleUpdatePassword = async ({ password, newPassword, email }) => {
+  const handleUpdatePassword = async ({ password, newPassword, email }: Record<string, string>) => {
     // eslint-disable-next-line no-console
     console.log(password, newPassword);
     try {
@@ -82,7 +82,7 @@ function App() {
     }
   };
 
-  const handleNewPassword = async ({ password, token }) => {
+  const handleNewPassword = async ({ password, token }: Record<string, string>) => {
     try {
       await auth.newPassword({ password, token });
       setIsOpen(true);
@@ -102,7 +102,7 @@ function App() {
     }
   };
 
-  const handleResetPassword = async ({ email }) => {
+  const handleResetPassword = async ({ email }: Record<string, string>) => {
     try {
       await auth.resetPassword({ email });
       setIsOpen(true);
@@ -126,7 +126,7 @@ function App() {
     setTextMessage({ title: '', description: '' });
   };
 
-  const handleLogOut = (e) => {
+  const handleLogOut = (e: any) => {
     e.preventDefault();
     localStorage.removeItem(STORE_TOKEN_NAME);
     setLoggedIn(false);
@@ -134,7 +134,7 @@ function App() {
     navigate(Urls.MAIN);
   };
 
-  const checkToken = (jwt) => {
+  const checkToken = (jwt: string) => {
     if (jwt) {
       auth
         .checkToken(jwt)
@@ -161,18 +161,18 @@ function App() {
     mountedRef.current = true;
     const jwt = localStorage.getItem(STORE_TOKEN_NAME);
     return () => {
-      checkToken(jwt);
+      checkToken(jwt!);
       mountedRef.current = false;
     };
   }, []);
 
-  const handleSignIn = async ({ email, password }) => {
+  const handleSignIn = async ({ email, password }: Record<string, string>) => {
     try {
       const result = await auth.signIn({ email, password });
       localStorage.setItem(STORE_TOKEN_NAME, result.token);
       checkToken(result.token);
       navigate(Urls.PROFILE.INDEX);
-    } catch (error) {
+    } catch (error: any) {
       if (error.message === 'Ошибка 401') {
         setIsOpen(true);
         setTextMessage({
@@ -185,7 +185,7 @@ function App() {
     }
   };
 
-  const handleSignUp = async ({ email, password, name }) => {
+  const handleSignUp = async ({ email, password, name }: Record<string, string>) => {
     try {
       const result = await auth.signUp({ email, password, name });
       setTextMessage({
@@ -194,7 +194,7 @@ function App() {
       });
       setIsOpen(true);
       navigate(Urls.SIGNIN);
-    } catch (error) {
+    } catch (error: any) {
       if (error.message === 'Ошибка 409') {
         setIsOpen(true);
         setTextMessage({
@@ -249,12 +249,11 @@ function App() {
           )}
         />
         <Route
-          exact
+          // exact
           path={Urls.MAIN}
           element={<Main />}
         />
         <Route
-          exact
           path={Urls.SIGNUP}
           element={(
             <Signup
@@ -263,7 +262,6 @@ function App() {
           )}
         />
         <Route
-          exact
           path={Urls.SIGNIN}
           element={(
             <Signin
@@ -272,7 +270,6 @@ function App() {
           )}
         />
         <Route
-          exact
           path={Urls.PASSWORD.RESET}
           element={(
             <ProfileResetPass
@@ -289,7 +286,6 @@ function App() {
           )}
         />
         <Route
-          exact
           path="*"
           element={<PageNotFound />}
         />

@@ -1,24 +1,40 @@
 {
   "compilerOptions": {
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
     "jsx": "react",
-    "noImplicitAny": true,
+    "importHelpers": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "target": "ES6",
-    "module": "commonjs",
     "esModuleInterop": true,
-    "allowJs": true,
-    "moduleResolution": "Node",
+    "strict": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "sourceMap": false,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "paths": {
+      "*": ["./src/*"]
+    },
     "typeRoots": [
-      "./node_modules/@types"
-    ]
+      "typings/**/*.d.ts",
+      "node_modules/@types",
+      "src/*.d.ts",
+      "./src/@types"]
   },
-  "include": ["./src/**/*", "src/server.js"],
-  "exclude": ["./dist"],
-  "overrides": [{
-    "files": ["*.ts", "*.tsx", "*.jsx", "*.js"],
-  }],
+  "include": [
+    "src",
+    "src/*.d.ts",
+    "typings/**/*.d.ts",
+    "./node_modules/@types",
+  ],
+  "exclude": [
+    "**/*.js"
+  ]
 }

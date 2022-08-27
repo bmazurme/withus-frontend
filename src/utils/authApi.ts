@@ -1,3 +1,5 @@
+/* eslint-disable lines-between-class-members */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Urls, STORE_TOKEN_NAME } from './constants';
 
 const Method = {
@@ -7,19 +9,20 @@ const Method = {
 };
 
 export class Auth {
-  constructor(options) {
+  options: any;
+  constructor(options: any) {
     this.options = options;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  checkResponse(res) {
+  checkResponse(res: Response) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
-  async signUp({ email, password, name }) {
+  async signUp({ email, password, name }: any) {
     const res = await fetch(`${this.options.baseUrl}/signup`, {
       method: Method.POST,
       headers: {
@@ -35,7 +38,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async signIn({ email, password }) {
+  async signIn({ email, password }: any) {
     const res = await fetch(`${this.options.baseUrl}/signin`, {
       method: Method.POST,
       headers: {
@@ -54,7 +57,7 @@ export class Auth {
     return null;
   }
 
-  async resetPassword({ email }) {
+  async resetPassword({ email }: any) {
     const res = await fetch(`${this.options.baseUrl}/reset/password`, {
       method: Method.POST,
       headers: {
@@ -67,7 +70,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async newPassword({ password, token }) {
+  async newPassword({ password, token }: any) {
     const res = await fetch(`${this.options.baseUrl}/reset/password`, {
       method: Method.PATCH,
       headers: {
@@ -91,7 +94,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async patchUser(user) {
+  async patchUser(user: any) {
     const res = await fetch(`${this.options.baseUrl}/users/me`, {
       method: Method.PATCH,
       headers: {
@@ -103,7 +106,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async checkToken(token) {
+  async checkToken(token: any) {
     const res = await fetch(`${this.options.baseUrl}/users/me`, {
       method: Method.GET,
       headers: {
@@ -114,7 +117,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async confirmEmail(token) {
+  async confirmEmail(token: any) {
     const res = await fetch(`${this.options.baseUrl}/confirm/${token}`, {
       method: Method.GET,
       headers: {
@@ -124,7 +127,7 @@ export class Auth {
     return this.checkResponse(res);
   }
 
-  async patchPassword({ password, newPassword, email }) {
+  async patchPassword({ password, newPassword, email }: any) {
     const res = await fetch(`${this.options.baseUrl}/users/password`, {
       method: Method.PATCH,
       headers: {

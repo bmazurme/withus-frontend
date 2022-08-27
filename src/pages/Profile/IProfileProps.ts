@@ -1,3 +1,3 @@
 export interface IProfileProps {
-  handleLogOut: () => void,
+  handleLogOut: (e: any) => void,
 }

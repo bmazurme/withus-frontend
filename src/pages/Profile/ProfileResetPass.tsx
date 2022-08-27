@@ -15,7 +15,7 @@ interface IValid {
 }
 
 interface IProps {
-  handleResetPassword: ({ password, token }: Record<string, string|undefined>) => void,
+  handleResetPassword: ({ password, token }: Record<string, string>) => void,
 }
 
 function SignReset({ handleResetPassword }: IProps) {

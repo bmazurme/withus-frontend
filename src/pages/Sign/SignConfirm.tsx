@@ -11,12 +11,12 @@ function SignConfirm({ navigate }: any) {
 
   useEffect(() => {
     auth.confirmEmail(token)
-      .then((result) => {
+      .then((result: any) => {
         if (result.message === 'ok') {
           setMessage('Email was approved');
         }
       })
-      .catch((error) => {
+      .catch((error: any) => {
         if (error.message === 'Ошибка 404') {
           navigate('PageNotFound');
         }
