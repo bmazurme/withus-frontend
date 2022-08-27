@@ -1,7 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
-
-import { IButtonProps } from './IButtonProps';
+import { IButtonProps } from '../../interfaces/interfaces';
 
 function Button({
   isValid,

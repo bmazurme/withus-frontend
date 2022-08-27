@@ -1,18 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ILinkProps } from './ILinkProps';
+import { ILinkProps } from '../../interfaces/ILinkProps';
 
-function Link(props: ILinkProps) {
-  const {
-    className,
-    to,
-    label,
-    // onHandleClick,
-  } = props;
+function Link({
+  className,
+  to,
+  label,
+  onHandleClick,
+}: ILinkProps) {
   return (
     <li>
       <NavLink
-        // onClick={onHandleClick}
+        onClick={onHandleClick!}
         className={className}
         to={to}
       >

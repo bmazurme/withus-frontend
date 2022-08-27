@@ -6,19 +6,9 @@ import Logo from '../../components/Logo/Logo';
 import SignFooter from './SignFooter';
 import useFormWithValidation from '../../utils/validator';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
+import { IValid, ISignProps } from '../../interfaces/interfaces';
 
-interface IValid {
-  values: Record<string, string>,
-  errors: Record<string, string>,
-  isValid: boolean,
-  handleChange: any,
-}
-
-interface IProps {
-  handleSignIn: ({ password, token }: Record<string, string>) => void,
-}
-
-function Signin({ handleSignIn }: IProps) {
+function Signin({ handleSign }: ISignProps) {
   const {
     values,
     errors,
@@ -28,7 +18,7 @@ function Signin({ handleSignIn }: IProps) {
 
   const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    handleSignIn({
+    handleSign({
       email: values.email,
       password: values.password,
     });

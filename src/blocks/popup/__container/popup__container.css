@@ -1,14 +1,12 @@
 .popup__container {
   max-width: 430px;
   width: 100%;
-  margin: 0;
-  padding: 0;
   position: relative;
   align-self: center;
-
   background-color: #fff;
   border-radius: 10px;
   margin: 0;
+  padding: 0;
   padding: 34px;
   z-index: 2;
 }

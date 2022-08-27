@@ -15,17 +15,41 @@ function Navigation({ isOpen, handlerClick }: INavigationProps) {
         : ''}`}
       >
         <ul className={`navigation__links ${isOpen ? 'navigation__links_opened' : ''}`}>
-          <Link className="navigation__link navigation__link_home" to={Urls.MAIN} label="Main" />
+          <Link
+            className="navigation__link navigation__link_home"
+            to={Urls.MAIN}
+            label="Main"
+            onHandleClick={null}
+          />
           {!name
             ? (
               <>
-                <Link className="navigation__link" to={Urls.SIGNIN} label="Signin" />
-                <Link className="navigation__link" to={Urls.SIGNUP} label="Signup" />
+                <Link
+                  className="navigation__link"
+                  to={Urls.SIGNIN}
+                  label="Signin"
+                  onHandleClick={null}
+                />
+                <Link
+                  className="navigation__link"
+                  to={Urls.SIGNUP}
+                  label="Signup"
+                  onHandleClick={null}
+                />
               </>
             )
             : null}
           {
-            name ? <Link className="navigation__link" to={Urls.PROFILE.INDEX} label={name} /> : null
+            name
+              ? (
+                <Link
+                  className="navigation__link"
+                  to={Urls.PROFILE.INDEX}
+                  label={name}
+                  onHandleClick={null}
+                />
+              )
+              : null
           }
         </ul>
       </div>

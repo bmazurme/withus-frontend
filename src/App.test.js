@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-// eslint-disable-next-line import/extensions
+// eslint-disable-next-line import/extensions, import/no-unresolved
 import App from './App';
 
 // eslint-disable-next-line no-undef

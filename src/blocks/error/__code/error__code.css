@@ -1,5 +1,4 @@
 .error__code {
-  text-align: center;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
@@ -10,7 +9,7 @@
   font-size: 140px;
   line-height: 169px;
   text-align: center;
-  color: #000000;
+  color: #000;
   width: 400px;
   height: 169px;
 }
@@ -23,9 +22,3 @@
     line-height: 97px;
   }
 }
-
-/* @media screen and (min-width: 580px) and (max-width: 879px) {
-  .error__code {
-
-  }
-} */

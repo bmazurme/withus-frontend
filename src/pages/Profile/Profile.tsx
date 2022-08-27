@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 import Header from '../../components/Header/Header';
 import Field from '../../components/Field/Field';
 import Menu from '../../components/Menu/Menu';
-import { IProfileProps } from './IProfileProps';
+import { IProfileProps } from '../../interfaces/interfaces';
 
 function Profile({ handleLogOut }: IProfileProps) {
   const currentUser = useContext(CurrentUserContext);

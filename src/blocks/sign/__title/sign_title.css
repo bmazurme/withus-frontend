@@ -8,9 +8,9 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  color: #000000;
-  align-items:flex-start;
-  text-align:start;
+  color: #000;
+  align-items: flex-start;
+  text-align: start;
 }
 
 @media screen and (min-width: 320px) and (max-width: 599px) {
@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 580px) and (max-width: 879px) {
   .sign__title {
-    align-items:flex-start;
-    text-align:start;
+    align-items: flex-start;
+    text-align: start;
   }
 }

@@ -10,11 +10,11 @@ import auth from '../utils/authApi';
 
 import Signup from '../pages/Sign/Signup';
 import Signin from '../pages/Sign/Signin';
-import ProfileResetPass from '../pages/Profile/ProfileResetPass';
+import PasswordReset from '../pages/password/PasswordReset';
 import Profile from '../pages/Profile/Profile';
 import ProfileEdit from '../pages/Profile/ProfileEdit';
-import ProfilePass from '../pages/Profile/ProfilePass';
-import ProfileNewPass from '../pages/Profile/ProfileNewPass';
+import PasswordUpdate from '../pages/password/PasswordUpdate';
+import PasswordNew from '../pages/password/PasswordNew';
 import Main from '../pages/Main/Main';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import SignConfirm from '../pages/Sign/SignConfirm';
@@ -126,7 +126,7 @@ function App() {
     setTextMessage({ title: '', description: '' });
   };
 
-  const handleLogOut = (e: any) => {
+  const handleLogOut = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.removeItem(STORE_TOKEN_NAME);
     setLoggedIn(false);
@@ -214,9 +214,7 @@ function App() {
           path={Urls.PROFILE.INDEX}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile
-                handleLogOut={handleLogOut}
-              />
+              <Profile handleLogOut={handleLogOut} />
             </ProtectedRoute>
           )}
         />
@@ -224,9 +222,7 @@ function App() {
           path={Urls.PROFILE.EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
-              <ProfileEdit
-                handleUpdateUser={handleUpdateUser}
-              />
+              <ProfileEdit handleUpdateUser={handleUpdateUser} />
             </ProtectedRoute>
           )}
         />
@@ -234,55 +230,42 @@ function App() {
           path={Urls.PASSWORD.EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
-              <ProfilePass
-                handleUpdatePassword={handleUpdatePassword}
-              />
+              <PasswordUpdate handler={handleUpdatePassword} />
             </ProtectedRoute>
           )}
         />
         <Route
           path={Urls.PASSWORD.NEW}
           element={(
-            <ProfileNewPass
-              handleNewPassword={handleNewPassword}
-            />
+            <PasswordNew handler={handleNewPassword} />
           )}
         />
         <Route
-          // exact
           path={Urls.MAIN}
           element={<Main />}
         />
         <Route
           path={Urls.SIGNUP}
           element={(
-            <Signup
-              handleSignUp={handleSignUp}
-            />
+            <Signup handleSign={handleSignUp} />
           )}
         />
         <Route
           path={Urls.SIGNIN}
           element={(
-            <Signin
-              handleSignIn={handleSignIn}
-            />
+            <Signin handleSign={handleSignIn} />
           )}
         />
         <Route
           path={Urls.PASSWORD.RESET}
           element={(
-            <ProfileResetPass
-              handleResetPassword={handleResetPassword}
-            />
+            <PasswordReset handler={handleResetPassword} />
           )}
         />
         <Route
           path={Urls.CONFIRM.TOKEN}
           element={(
-            <SignConfirm
-              navigate={navigate}
-            />
+            <SignConfirm navigate={navigate} />
           )}
         />
         <Route

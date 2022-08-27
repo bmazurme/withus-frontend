@@ -1,7 +1,7 @@
 .inbox__input {
-  background-color: #F4F4F4;
-  border-color:	#F4F4F4;
-  border: 1px solid #F4F4F4;
+  background-color: #f4f4f4;
+  border-color: #f4f4f4;
+  border: 1px solid #f4f4f4;
   border-radius: 8px;
   max-width: 364px;
   width: 100%;
@@ -21,9 +21,3 @@
     max-width: 230px;
   }
 }
-
-/* @media screen and (min-width: 580px) and (max-width: 879px) {
-  .inbox__input {
-
-  }
-} */

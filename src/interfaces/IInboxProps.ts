@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface IInboxProps {
   label: string,
   pattern: string,
@@ -6,10 +8,10 @@ export interface IInboxProps {
   minLength: number,
   maxLength: number,
   required: boolean,
-  errors: any,
+  errors: Record<string, string>,
   type: string,
   id: string,
   autoComplete: string,
   value: string,
-  onChange: (e: any) => void,
+  onChange: (e: React.ChangeEvent) => void,
 }

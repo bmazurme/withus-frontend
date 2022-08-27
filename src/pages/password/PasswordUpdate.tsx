@@ -7,19 +7,9 @@ import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
 import useFormWithValidation from '../../utils/validator';
 import { Urls } from '../../utils/constants';
+import { IValid, IPasswordProps } from '../../interfaces/interfaces';
 
-interface IValid {
-  values: Record<string, string>,
-  errors: Record<string, string>,
-  isValid: boolean,
-  handleChange: any,
-}
-
-interface IProps {
-  handleUpdatePassword: ({ password, token }: Record<string, string>) => void,
-}
-
-function ProfilePass({ handleUpdatePassword }: IProps) {
+function PasswordUpdate({ handler }: IPasswordProps) {
   const {
     values,
     errors,
@@ -37,7 +27,7 @@ function ProfilePass({ handleUpdatePassword }: IProps) {
 
   const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    handleUpdatePassword({
+    handler({
       password: values.password,
       newPassword: values.newPassword,
       email,
@@ -113,10 +103,11 @@ function ProfilePass({ handleUpdatePassword }: IProps) {
           className="profile__link"
           to={Urls.PROFILE.INDEX}
           label="Назад"
+          onHandleClick={null}
         />
       </ul>
     </section>
   );
 }
 
-export default ProfilePass;
+export default PasswordUpdate;

@@ -14,12 +14,8 @@ function Popup({ onClose, text, isOpen }: IPopupProps) {
           onClick={onClose}
         />
         <div className="tooltip">
-          <p className="popup__title">
-            {text.title}
-          </p>
-          <p className="popup__text">
-            {text.description}
-          </p>
+          <p className="popup__title">{text.title}</p>
+          <p className="popup__text">{text.description}</p>
         </div>
       </div>
     </div>

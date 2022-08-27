@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { IInboxProps } from './IInboxProps';
+import { IInboxProps } from '../../interfaces/interfaces';
 
 function Inbox(props: IInboxProps) {
   const {
@@ -11,7 +11,7 @@ function Inbox(props: IInboxProps) {
     minLength,
     maxLength,
     required,
-    errors = [],
+    errors = {},
     type,
     id,
     autoComplete,
@@ -24,7 +24,6 @@ function Inbox(props: IInboxProps) {
       <label className="inbox__label">
         {label}
       </label>
-
       {pattern
         ? (
           <input
@@ -57,7 +56,6 @@ function Inbox(props: IInboxProps) {
             value={value}
           />
         )}
-
       <span className={`${label}-input-error inbox__label_error`}>
         {errors ? errors[name] : ''}
       </span>

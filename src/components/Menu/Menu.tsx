@@ -1,33 +1,10 @@
 import React from 'react';
 import Link from '../Link/Link';
+import { links } from './links';
+import { IMenu } from '../../interfaces/interfaces';
 import { Urls } from '../../utils/constants';
 
-import { IMenu } from './IMenu';
-
 function Menu({ handleLogOut }: IMenu) {
-  const links = [
-    {
-      className: 'profile__link',
-      to: Urls.PROFILE.EDIT,
-      label: 'Edit profile',
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      handler: () => {},
-    },
-    {
-      className: 'profile__link',
-      to: Urls.PASSWORD.EDIT,
-      label: 'Edit password',
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      handler: () => {},
-    },
-    {
-      className: 'profile__link profile__link_red',
-      to: Urls.MAIN,
-      label: 'Sign out',
-      handler: handleLogOut,
-    },
-  ];
-
   return (
     <ul className="profile__links">
       {links.map((link, index) => (
@@ -37,7 +14,7 @@ function Menu({ handleLogOut }: IMenu) {
           className={link.className}
           to={link.to}
           label={link.label}
-          // onHandleClick={link.handler}
+          onHandleClick={link.to === Urls.MAIN ? handleLogOut! : link.handler!}
         />
       ))}
     </ul>

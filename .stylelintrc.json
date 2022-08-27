@@ -4,6 +4,7 @@
 
   ],
   "rules": {
+    "selector-class-pattern": null,
     "at-rule-no-unknown": null,
     "font-family-no-duplicate-names": true,
     "color-hex-case": "lower"

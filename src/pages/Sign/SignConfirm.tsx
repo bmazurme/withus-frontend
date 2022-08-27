@@ -10,7 +10,7 @@ function SignConfirm({ navigate }: any) {
   const [message, setMessage] = React.useState('Email was not found');
 
   useEffect(() => {
-    auth.confirmEmail(token)
+    auth.confirmEmail(token!)
       .then((result: any) => {
         if (result.message === 'ok') {
           setMessage('Email was approved');
@@ -37,6 +37,7 @@ function SignConfirm({ navigate }: any) {
             className="sign__link"
             to={Urls.SIGNIN}
             label="Go to signin"
+            onHandleClick={null}
           />
         </ul>
       </div>

@@ -1,6 +1,8 @@
+import React from 'react';
+
 export interface ILinkProps {
   className: string,
   to: string,
   label: string,
-  // onHandleClick: () => void,
+  onHandleClick: ((e: React.FormEvent) => void)|null,
 }

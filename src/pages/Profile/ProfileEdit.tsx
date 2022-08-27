@@ -7,19 +7,9 @@ import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
 import useFormWithValidation from '../../utils/validator';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
+import { IValid, IProfileEditProps } from '../../interfaces/interfaces';
 
-interface IProps {
-  handleUpdateUser: ({ email, name }: Record<string, string>) => void,
-}
-
-interface IValid {
-  values: Record<string, string>,
-  errors: Record<string, string>,
-  isValid: boolean,
-  handleChange: any,
-}
-
-function ProfileEdit({ handleUpdateUser }: IProps) {
+function ProfileEdit({ handleUpdateUser }: IProfileEditProps) {
   const {
     values,
     errors,
@@ -95,6 +85,7 @@ function ProfileEdit({ handleUpdateUser }: IProps) {
           className="profile__link"
           to={Urls.PROFILE.INDEX}
           label="Back"
+          onHandleClick={null}
         />
       </ul>
     </section>

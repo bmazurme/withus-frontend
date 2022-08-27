@@ -10,8 +10,8 @@
   line-height: 16px;
   display: flex;
   align-items: center;
-  text-align: center;  
-  color: #000000;
+  text-align: center;
+  color: #000;
   opacity: 1;
   transition: opacity 0.5s ease;
 }

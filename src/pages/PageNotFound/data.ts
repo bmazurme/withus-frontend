@@ -1,5 +1,5 @@
 import { Urls } from '../../utils/constants';
-import { IError } from './IError';
+import { IError } from '../../interfaces/interfaces';
 
 export const data: IError = {
   code: 404,
