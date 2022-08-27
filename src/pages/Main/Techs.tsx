@@ -12,11 +12,10 @@ function Techs() {
         которые применили в дипломном проекте.
       </p>
       <ul className="techs__list">
-        {tags.map((tag: string, index: number) => (
+        {tags.map((tag: string) => (
           <Tag
             tag={tag}
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={`${tag}`}
           />
         ))}
       </ul>

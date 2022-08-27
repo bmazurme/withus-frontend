@@ -28,7 +28,7 @@ import { Urls, STORE_TOKEN_NAME, ERROR_TITLE_DEFAULT } from '../utils/constants'
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentUser, setCurrentUser] = React.useState<any>({});
+  const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' });
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [textMessage, setTextMessage] = React.useState({ title: '', description: '' });
@@ -124,8 +124,8 @@ function App() {
     e.preventDefault();
     localStorage.removeItem(STORE_TOKEN_NAME);
     setLoggedIn(false);
-    setCurrentUser({});
-    navigate(Urls.MAIN);
+    setCurrentUser({ name: '', email: '' });
+    navigate(Urls.MAIN.INDEX);
   };
 
   const checkToken = (jwt: string) => {
@@ -165,15 +165,16 @@ function App() {
       localStorage.setItem(STORE_TOKEN_NAME, result.token);
       checkToken(result.token);
       navigate(Urls.PROFILE.INDEX);
-    } catch (error: any) {
-      if (error.message === 'Ошибка 401') {
+    } catch (error) {
+      const { message } = error as Error;
+      if (message === 'Ошибка 401') {
         setIsOpen(true);
         setTextMessage({
           title: ERROR_TITLE_DEFAULT,
           description: 'неправильный логин или пароль',
         });
       }
-      console.log(error.message);
+      console.log(message);
     }
   };
 
@@ -186,15 +187,16 @@ function App() {
       });
       setIsOpen(true);
       navigate(Urls.SIGN.IN);
-    } catch (error: any) {
-      if (error.message === 'Ошибка 409') {
+    } catch (error) {
+      const { message } = error as Error;
+      if (message === 'Ошибка 409') {
         setIsOpen(true);
         setTextMessage({
           title: ERROR_TITLE_DEFAULT,
           description: 'пользователь с такими данными существует',
         });
       }
-      console.log(error.message);
+      console.log(message);
     }
   };
 
@@ -232,7 +234,7 @@ function App() {
           )}
         />
         <Route
-          path={Urls.MAIN}
+          path={Urls.MAIN.INDEX}
           element={<Main />}
         />
         <Route

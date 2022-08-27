@@ -17,7 +17,7 @@ function Navigation({ isOpen, handlerClick }: INavigationProps) {
         <ul className={`navigation__links ${isOpen ? 'navigation__links_opened' : ''}`}>
           <Link
             className="navigation__link navigation__link_home"
-            to={Urls.MAIN}
+            to={Urls.MAIN.INDEX}
             label="Main"
             onHandleClick={null}
           />

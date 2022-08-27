@@ -18,7 +18,7 @@ export const links = [
   },
   {
     className: 'profile__link profile__link_red',
-    to: Urls.MAIN,
+    to: Urls.MAIN.INDEX,
     label: 'Sign out',
     handler: (e: React.FormEvent) => {},
   },

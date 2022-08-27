@@ -4,7 +4,7 @@ import { Urls } from '../../utils/constants';
 
 function Logo() {
   return (
-    <NavLink className="logo" to={Urls.MAIN}>
+    <NavLink className="logo" to={Urls.MAIN.INDEX}>
       <div className="logo__icon" />
     </NavLink>
   );

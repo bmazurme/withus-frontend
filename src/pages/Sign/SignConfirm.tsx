@@ -7,7 +7,7 @@ import { Urls } from '../../utils/constants';
 function SignConfirm({ navigate }: any) {
   const params = useParams();
   const { token } = params;
-  const [message, setMessage] = React.useState('Email was not found');
+  const [mess, setMessage] = React.useState('Email was not found');
 
   useEffect(() => {
     auth.confirmEmail(token!)
@@ -16,8 +16,9 @@ function SignConfirm({ navigate }: any) {
           setMessage('Email was approved');
         }
       })
-      .catch((error: any) => {
-        if (error.message === 'Ошибка 404') {
+      .catch((error) => {
+        const { message } = error as Error;
+        if (message === 'Ошибка 404') {
           navigate('PageNotFound');
         }
       });
@@ -31,7 +32,7 @@ function SignConfirm({ navigate }: any) {
     <section className="sign">
       <div className="container">
         <h2 className="sign__title">Title</h2>
-        <p>{message}</p>
+        <p>{mess}</p>
         <ul className="sign__links">
           <Link
             className="sign__link"

@@ -2,7 +2,11 @@ export const EMAIL_REGEXP = '[a-z0-9._%+-]+@[a-z0-9.-]+[\\.{0}][a-z]{2,3}$';
 
 export const Urls = {
   AUTH: 'http://localhost:3001',
-  MAIN: '/',
+  MAIN: {
+    INDEX: '/',
+    ABOUT: '/about',
+    PRIVATE: '/private',
+  },
   SIGN: {
     IN: '/signin',
     UP: '/signup',

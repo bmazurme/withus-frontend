@@ -14,7 +14,7 @@ function Menu({ handleLogOut }: IMenu) {
           className={link.className}
           to={link.to}
           label={link.label}
-          onHandleClick={link.to === Urls.MAIN ? handleLogOut! : link.handler!}
+          onHandleClick={link.to === Urls.MAIN.INDEX ? handleLogOut! : link.handler!}
         />
       ))}
     </ul>

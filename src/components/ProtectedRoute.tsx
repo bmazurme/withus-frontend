@@ -4,7 +4,7 @@ import { Urls } from '../utils/constants';
 
 interface IProps {
   loggedIn: boolean,
-  children: any,
+  children: React.ReactElement,
 }
 
 function ProtectedRoute({ loggedIn, children }: IProps) {

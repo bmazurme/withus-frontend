@@ -5,13 +5,13 @@ function useFormWithValidation() {
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
-  const handleChange = (event: { target: Record<string, any> }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
     const { name, value } = target;
 
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: target.validationMessage });
-    setIsValid(target.closest('form').checkValidity());
+    setIsValid(target.closest('form')!.checkValidity());
   };
 
   const resetForm = useCallback(
