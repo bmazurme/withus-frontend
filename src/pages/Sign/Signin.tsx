@@ -71,7 +71,7 @@ function Signin({ handleSign }: ISignProps) {
         <SignFooter
           text="Еще не зарегистрированы?"
           link={{
-            url: Urls.SIGNUP,
+            url: Urls.SIGN.UP,
             label: 'SignUp',
           }}
         />

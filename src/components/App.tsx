@@ -52,14 +52,11 @@ function App() {
         title: ERROR_TITLE_DEFAULT,
         description: 'некорректные данные',
       });
-      // eslint-disable-next-line no-console
       console.log(error);
     }
   };
 
   const handleUpdatePassword = async ({ password, newPassword, email }: Record<string, string>) => {
-    // eslint-disable-next-line no-console
-    console.log(password, newPassword);
     try {
       const result = await auth.patchPassword({ password, newPassword, email });
       setTextMessage({
@@ -77,7 +74,6 @@ function App() {
         title: ERROR_TITLE_DEFAULT,
         description: 'некорректные данные',
       });
-      // eslint-disable-next-line no-console
       console.log(error);
     }
   };
@@ -90,14 +86,13 @@ function App() {
         title: 'ERROR_TITLE_DEFAULT',
         description: 'пароль был обновлен',
       });
-      navigate(Urls.SIGNIN);
+      navigate(Urls.SIGN.IN);
     } catch (error) {
       setIsOpen(true);
       setTextMessage({
         title: ERROR_TITLE_DEFAULT,
         description: 'error',
       });
-      // eslint-disable-next-line no-console
       console.log(error);
     }
   };
@@ -116,7 +111,6 @@ function App() {
         title: ERROR_TITLE_DEFAULT,
         description: 'error',
       });
-      // eslint-disable-next-line no-console
       console.log(error);
     }
   };
@@ -143,15 +137,14 @@ function App() {
             setCurrentUser(res);
             setLoggedIn(true);
 
-            if (location.pathname === Urls.SIGNIN
-              || location.pathname === Urls.SIGNUP) {
+            if (location.pathname === Urls.SIGN.IN
+              || location.pathname === Urls.SIGN.UP) {
               navigate(Urls.PROFILE.INDEX);
             }
           }
         })
         .catch((err) => {
           setLoggedIn(false);
-          // eslint-disable-next-line no-console
           console.log(`Переданный токен некорректен. ${err}`);
         });
     }
@@ -180,7 +173,6 @@ function App() {
           description: 'неправильный логин или пароль',
         });
       }
-      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   };
@@ -193,7 +185,7 @@ function App() {
         description: `пожалуйста подтвердите ваш email, для ${result.name}`,
       });
       setIsOpen(true);
-      navigate(Urls.SIGNIN);
+      navigate(Urls.SIGN.IN);
     } catch (error: any) {
       if (error.message === 'Ошибка 409') {
         setIsOpen(true);
@@ -202,7 +194,6 @@ function App() {
           description: 'пользователь с такими данными существует',
         });
       }
-      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   };
@@ -245,13 +236,13 @@ function App() {
           element={<Main />}
         />
         <Route
-          path={Urls.SIGNUP}
+          path={Urls.SIGN.UP}
           element={(
             <Signup handleSign={handleSignUp} />
           )}
         />
         <Route
-          path={Urls.SIGNIN}
+          path={Urls.SIGN.IN}
           element={(
             <Signin handleSign={handleSignIn} />
           )}
@@ -263,7 +254,7 @@ function App() {
           )}
         />
         <Route
-          path={Urls.CONFIRM.TOKEN}
+          path={Urls.SIGN.CONFIRM}
           element={(
             <SignConfirm navigate={navigate} />
           )}

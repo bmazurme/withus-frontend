@@ -26,13 +26,13 @@ function Navigation({ isOpen, handlerClick }: INavigationProps) {
               <>
                 <Link
                   className="navigation__link"
-                  to={Urls.SIGNIN}
+                  to={Urls.SIGN.IN}
                   label="Signin"
                   onHandleClick={null}
                 />
                 <Link
                   className="navigation__link"
-                  to={Urls.SIGNUP}
+                  to={Urls.SIGN.UP}
                   label="Signup"
                   onHandleClick={null}
                 />

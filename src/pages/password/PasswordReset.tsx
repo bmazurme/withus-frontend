@@ -54,7 +54,7 @@ function PasswordReset({ handler }: IPasswordProps) {
         <ul className="profile__links">
           <Link
             className="profile__link"
-            to={Urls.SIGNIN}
+            to={Urls.SIGN.IN}
             label="Back"
             onHandleClick={null}
           />

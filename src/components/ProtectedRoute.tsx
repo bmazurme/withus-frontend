@@ -11,7 +11,7 @@ function ProtectedRoute({ loggedIn, children }: IProps) {
   if (!loggedIn) {
     return (
       <Navigate
-        to={Urls.SIGNIN}
+        to={Urls.SIGN.IN}
         replace
       />
     );

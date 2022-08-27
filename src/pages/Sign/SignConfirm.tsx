@@ -35,7 +35,7 @@ function SignConfirm({ navigate }: any) {
         <ul className="sign__links">
           <Link
             className="sign__link"
-            to={Urls.SIGNIN}
+            to={Urls.SIGN.IN}
             label="Go to signin"
             onHandleClick={null}
           />
