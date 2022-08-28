@@ -20,6 +20,7 @@ import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import SignConfirm from '../pages/Sign/SignConfirm';
 import ProtectedRoute from './ProtectedRoute';
 import Popup from './Popup/Popup';
+import Preloader from './Preloader/Preloader';
 
 import { CurrentUserContext } from '../context/CurrentUserContext';
 
@@ -140,6 +141,8 @@ function App() {
             if (location.pathname === Urls.SIGN.IN
               || location.pathname === Urls.SIGN.UP) {
               navigate(Urls.PROFILE.INDEX);
+            } else {
+              navigate(location.pathname);
             }
           }
         })
@@ -152,6 +155,9 @@ function App() {
 
   useEffect(() => {
     mountedRef.current = true;
+    // console.log(location.pathname);
+    // console.log(location.pathname);
+    // navigate(location.pathname);
     const jwt = localStorage.getItem(STORE_TOKEN_NAME);
     return () => {
       checkToken(jwt!);
@@ -202,9 +208,14 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <Preloader />
       <Routes>
         <Route
-          path={Urls.PROFILE.INDEX}
+          index
+          element={<Main />}
+        />
+        <Route
+          path="/profile"
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile handleLogOut={handleLogOut} />
@@ -212,13 +223,14 @@ function App() {
           )}
         />
         <Route
-          path={Urls.PROFILE.EDIT}
+          path="/profile/:edit"
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfileEdit handleUpdateUser={handleUpdateUser} />
             </ProtectedRoute>
           )}
         />
+
         <Route
           path={Urls.PASSWORD.EDIT}
           element={(
@@ -233,10 +245,7 @@ function App() {
             <PasswordNew handler={handleNewPassword} />
           )}
         />
-        <Route
-          path={Urls.MAIN.INDEX}
-          element={<Main />}
-        />
+
         <Route
           path={Urls.SIGN.UP}
           element={(
@@ -250,17 +259,18 @@ function App() {
           )}
         />
         <Route
-          path={Urls.PASSWORD.RESET}
-          element={(
-            <PasswordReset handler={handleResetPassword} />
-          )}
-        />
-        <Route
           path={Urls.SIGN.CONFIRM}
           element={(
             <SignConfirm navigate={navigate} />
           )}
         />
+        <Route
+          path={Urls.PASSWORD.RESET}
+          element={(
+            <PasswordReset handler={handleResetPassword} />
+          )}
+        />
+
         <Route
           path="*"
           element={<PageNotFound />}

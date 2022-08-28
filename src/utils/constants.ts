@@ -17,13 +17,14 @@ export const Urls = {
     EDIT: '/profile/edit',
   },
   PASSWORD: {
+    INDEX: '/password',
     EDIT: '/password/edit',
     RESET: '/password/reset',
     NEW: '/password/new/:token',
   },
   ADMIN: {
     INDEX: '/admin',
-    USERS: '/admin/users',
+    USERS: '/admin-users',
   },
 };
 

@@ -3,9 +3,9 @@ import { IError } from '../../interfaces/interfaces';
 
 export const data: IError = {
   code: 404,
-  text: 'Страница не найдена',
+  text: 'Page not found',
   link: {
     url: Urls.MAIN.INDEX,
-    label: 'Назад',
+    label: 'Back',
   },
 };

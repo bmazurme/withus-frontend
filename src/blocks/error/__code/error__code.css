@@ -14,6 +14,15 @@
   height: 169px;
 }
 
+@media screen and (max-width: 319px) {
+  .error__code {
+    max-width: 100%;
+    height: 57px;
+    font-size: 50px;
+    line-height: 57px;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 599px) {
   .error__code {
     width: 300px;

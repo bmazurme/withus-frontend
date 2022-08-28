@@ -1,0 +1,57 @@
+.navigation__signup {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  text-decoration: none;
+  color: var(--promo-signup-button);
+}
+
+@media screen and (min-width: 100px) and (max-width: 479px) {
+  .navigation__signup {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+    text-align: right;
+    color: #000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    display: flex;
+    margin-bottom: 28px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .navigation__signup {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+    text-align: right;
+    color: #000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    display: flex;
+    margin-bottom: 28px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+}

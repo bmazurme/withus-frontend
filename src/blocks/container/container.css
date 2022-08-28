@@ -18,6 +18,6 @@
 
 @media screen and (min-width: 580px) and (max-width: 879px) {
   .container {
-    padding-top: 232px;
+    /* padding-top: 232px; */
   }
 }

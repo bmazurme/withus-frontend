@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { Urls } from '../../utils/constants';
 import Link from '../Link/Link';
-import { INavigationProps } from './INavigationProps';
+import { INavigationProps } from '../../interfaces/interfaces';
+import ProfileButton from '../ProfileButton/ProfileButton';
 
 function Navigation({ isOpen, handlerClick }: INavigationProps) {
   const currentUser = useContext(CurrentUserContext);
@@ -25,15 +26,15 @@ function Navigation({ isOpen, handlerClick }: INavigationProps) {
             ? (
               <>
                 <Link
-                  className="navigation__link"
-                  to={Urls.SIGN.IN}
-                  label="Signin"
+                  className="navigation__signup"
+                  to={Urls.SIGN.UP}
+                  label="Signup"
                   onHandleClick={null}
                 />
                 <Link
-                  className="navigation__link"
-                  to={Urls.SIGN.UP}
-                  label="Signup"
+                  className="navigation__signin"
+                  to={Urls.SIGN.IN}
+                  label="Signin"
                   onHandleClick={null}
                 />
               </>
@@ -42,12 +43,15 @@ function Navigation({ isOpen, handlerClick }: INavigationProps) {
           {
             name
               ? (
-                <Link
-                  className="navigation__link"
-                  to={Urls.PROFILE.INDEX}
-                  label={name}
-                  onHandleClick={null}
+                <ProfileButton
+                  isOpen
                 />
+                // <Link
+                //   className="profile-button"
+                //   to={Urls.PROFILE.INDEX}
+                //   label={name}
+                //   onHandleClick={null}
+                // />
               )
               : null
           }

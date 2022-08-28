@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.svg'],
@@ -21,8 +22,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif|woff2|woff(2)?|eot|ttf|otf|ico)$/,
         type: 'asset/resource',
-        exclude: /node_modules/,
-        use: ['file-loader?name=[name].[ext]'],
       },
       {
         test: /\.css$/,

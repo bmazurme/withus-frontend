@@ -13,6 +13,14 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 319px){
+  .error__link {
+    font-size: 8px;
+    line-height: 12px;
+    bottom: 60px;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 599px) {
   .error__link {
     font-size: 12px;

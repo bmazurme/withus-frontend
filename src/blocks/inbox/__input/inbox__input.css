@@ -3,7 +3,7 @@
   border-color: #f4f4f4;
   border: 1px solid #f4f4f4;
   border-radius: 8px;
-  max-width: 364px;
+  /* max-width: 364px; */
   width: 100%;
   height: 46px;
   margin-top: 10px;
@@ -14,10 +14,11 @@
   padding-right: 15px;
   padding-top: 0;
   padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 320px) and (max-width: 599px) {
   .inbox__input {
-    max-width: 230px;
+    /* max-width: 366px; */
   }
 }

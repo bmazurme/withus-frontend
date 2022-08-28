@@ -65,6 +65,8 @@
 @import "./blocks/navigation/__links/_opened/navigation__links_opened.css";
 @import "./blocks/navigation/__link/_active/navigation__link_active.css";
 @import "./blocks/navigation/__link/_home/navigation__link_home.css";
+@import "./blocks/navigation/__signin/navigation__signin.css";
+@import "./blocks/navigation/__signup/navigation__signup.css";
 
 /* logo */
 @import "./blocks/logo/logo.css";
@@ -83,3 +85,22 @@
 /* tag */
 @import "./blocks/tag/tag.css";
 @import "./blocks/label/_off/label_off.css";
+
+/* footer */
+@import "./blocks/footer/footer.css";
+@import "./blocks/footer/__info/footer__info.css";
+@import "./blocks/footer/__bottom/footer__bottom.css";
+@import "./blocks/footer/__link/footer__link.css";
+@import "./blocks/footer/__text/footer__text.css";
+@import "./blocks/footer/__copyright/footer__copyright.css";
+
+/* banner */
+@import "./blocks/banner/banner.css";
+
+/* profile-button */
+@import "./blocks/profile-button/profile-button.css";
+@import "./blocks/profile-button/__icon/profile-button__icon.css";
+@import "./blocks/profile-button/__label/profile-button__label.css";
+
+@import "./blocks/headermenu/headermenu.css";
+@import "./blocks/headermenu/__link/headermenu__link.css";

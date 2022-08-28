@@ -9,3 +9,4 @@ export { ILinkProps } from './ILinkProps';
 export { IMenu } from './IMenu';
 export { IError } from './IError';
 export { IOption } from './IOption';
+export { INavigationProps } from './INavigationProps';
