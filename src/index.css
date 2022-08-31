@@ -104,3 +104,8 @@
 
 @import "./blocks/headermenu/headermenu.css";
 @import "./blocks/headermenu/__link/headermenu__link.css";
+
+@import "./blocks/card/card.css";
+@import "./blocks/card/__image/card__image.css";
+@import "./blocks/card/__title/card__title.css";
+@import "./blocks/card/__description/card__description.css";

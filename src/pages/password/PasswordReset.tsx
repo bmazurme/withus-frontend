@@ -22,6 +22,7 @@ function PasswordReset({ handler }: IPasswordProps) {
       email: values.email,
     });
   };
+
   return (
     <section className="sign">
       <div className="container">
@@ -43,7 +44,6 @@ function PasswordReset({ handler }: IPasswordProps) {
             minLength={6}
             maxLength={20}
           />
-
           <Button
             typeButton="submit"
             value="Reset"

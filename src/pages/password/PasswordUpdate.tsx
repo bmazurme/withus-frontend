@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import React, { useContext, useEffect } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectData } from '../../user/userSlice';
 import Logo from '../../components/Logo/Logo';
 import Link from '../../components/Link/Link';
 import Inbox from '../../components/Inbox/Inbox';
@@ -16,13 +17,17 @@ function PasswordUpdate({ handler }: IPasswordProps) {
     isValid,
     handleChange,
   }: IValid = useFormWithValidation();
-
-  const currentUser: Record<string, string> = useContext(CurrentUserContext);
-  const { name, email } = currentUser;
+  const { user } = useSelector(selectData);
+  const {
+    name,
+    email,
+    password,
+    newPassword,
+  } = user;
 
   useEffect(() => {
-    values.password = currentUser.password;
-    values.newPassword = currentUser.newPassword;
+    values.password = password;
+    values.newPassword = newPassword;
   }, []);
 
   const handleSubmit = (evt: React.FormEvent) => {

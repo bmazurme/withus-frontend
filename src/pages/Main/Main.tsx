@@ -4,6 +4,7 @@ import Techs from './Techs';
 import Footer from '../../components/Footer/Footer';
 import Banner from '../../components/Banner/Banner';
 import HeaderMenu from '../../components/HeaderMenu/HeaderMenu';
+import Cards from '../../components/Cards/Cards';
 
 function Main() {
   return (
@@ -11,6 +12,7 @@ function Main() {
       <Header />
       <HeaderMenu />
       <Techs />
+      <Cards />
       <Footer />
       <Banner />
     </>

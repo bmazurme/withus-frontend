@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectData } from '../../user/userSlice';
 import { Urls } from '../../utils/constants';
 import Link from '../Link/Link';
 import { INavigationProps } from '../../interfaces/interfaces';
 import ProfileButton from '../ProfileButton/ProfileButton';
 
 function Navigation({ isOpen, handlerClick }: INavigationProps) {
-  const currentUser = useContext(CurrentUserContext);
-  const { name } = currentUser;
+  const { user } = useSelector(selectData);
+  const { name } = user;
   return (
     <>
       <div className={`navigation

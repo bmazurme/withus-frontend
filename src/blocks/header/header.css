@@ -4,13 +4,8 @@
   box-sizing: content-box;
   height: 74px;
   width: auto;
-  margin: 0;
-  margin-left: 70px;
-  margin-right: 70px;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
+  margin: 0 70px;
+  padding: 0;
   z-index: 1000;
   top: 0;
   left: 0;

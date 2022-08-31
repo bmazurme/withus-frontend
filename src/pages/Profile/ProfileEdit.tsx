@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import React, { useContext, useEffect } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectData } from '../../user/userSlice';
 import Logo from '../../components/Logo/Logo';
 import Inbox from '../../components/Inbox/Inbox';
 import Button from '../../components/Button/Button';
@@ -17,12 +18,12 @@ function ProfileEdit({ handleUpdateUser }: IProfileEditProps) {
     handleChange,
   }: IValid = useFormWithValidation();
 
-  const currentUser = useContext(CurrentUserContext);
-  const { name, email } = currentUser;
+  const { user } = useSelector(selectData);
+  const { name, email } = user;
 
   useEffect(() => {
-    values.name = currentUser.name;
-    values.email = currentUser.email;
+    values.name = name;
+    values.email = email;
   }, []);
 
   const handleSubmit = (evt: React.FormEvent) => {

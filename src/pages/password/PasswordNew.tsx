@@ -12,6 +12,7 @@ import { IValid, IPasswordProps } from '../../interfaces/interfaces';
 function PasswordNew({ handler }: IPasswordProps) {
   const params = useParams();
   const { token } = params;
+
   const {
     values,
     errors,

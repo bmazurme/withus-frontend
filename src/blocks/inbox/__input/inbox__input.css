@@ -1,19 +1,11 @@
 .inbox__input {
   background-color: #f4f4f4;
-  border-color: #f4f4f4;
-  border: 1px solid #f4f4f4;
+  border: #f4f4f4 1px solid;
   border-radius: 8px;
-  /* max-width: 364px; */
   width: 100%;
   height: 46px;
-  margin-top: 10px;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin: 10px 0 0;
+  padding: 0 15px;
   box-sizing: border-box;
 }
 

@@ -5,6 +5,8 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../user/userSlice';
 
 import auth from '../utils/authApi';
 
@@ -22,14 +24,13 @@ import ProtectedRoute from './ProtectedRoute';
 import Popup from './Popup/Popup';
 import Preloader from './Preloader/Preloader';
 
-import { CurrentUserContext } from '../context/CurrentUserContext';
-
 import { Urls, STORE_TOKEN_NAME, ERROR_TITLE_DEFAULT } from '../utils/constants';
 
 function App() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' });
+
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [textMessage, setTextMessage] = React.useState({ title: '', description: '' });
@@ -42,7 +43,7 @@ function App() {
         title: '!',
         description: 'данные успешно обновлены',
       });
-      setCurrentUser(result);
+      dispatch(setUserData(result));
       setIsOpen(true);
       setTimeout(() => {
         setIsOpen(false);
@@ -64,7 +65,7 @@ function App() {
         title: '!',
         description: 'данные успешно обновлены',
       });
-      setCurrentUser(result);
+      dispatch(setUserData(result));
       setIsOpen(true);
       setTimeout(() => {
         setIsOpen(false);
@@ -84,7 +85,7 @@ function App() {
       await auth.newPassword({ password, token });
       setIsOpen(true);
       setTextMessage({
-        title: 'ERROR_TITLE_DEFAULT',
+        title: ERROR_TITLE_DEFAULT,
         description: 'пароль был обновлен',
       });
       navigate(Urls.SIGN.IN);
@@ -123,9 +124,10 @@ function App() {
 
   const handleLogOut = (e: React.FormEvent) => {
     e.preventDefault();
+
     localStorage.removeItem(STORE_TOKEN_NAME);
     setLoggedIn(false);
-    setCurrentUser({ name: '', email: '' });
+    dispatch(setUserData({ name: '', email: '' }));
     navigate(Urls.MAIN.INDEX);
   };
 
@@ -135,7 +137,7 @@ function App() {
         .checkToken(jwt)
         .then((res) => {
           if (res) {
-            setCurrentUser(res);
+            dispatch(setUserData(res));
             setLoggedIn(true);
 
             if (location.pathname === Urls.SIGN.IN
@@ -155,10 +157,8 @@ function App() {
 
   useEffect(() => {
     mountedRef.current = true;
-    // console.log(location.pathname);
-    // console.log(location.pathname);
-    // navigate(location.pathname);
     const jwt = localStorage.getItem(STORE_TOKEN_NAME);
+
     return () => {
       checkToken(jwt!);
       mountedRef.current = false;
@@ -207,15 +207,12 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <>
       <Preloader />
       <Routes>
+        <Route index element={<Main />} />
         <Route
-          index
-          element={<Main />}
-        />
-        <Route
-          path="/profile"
+          path={Urls.PROFILE.INDEX}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile handleLogOut={handleLogOut} />
@@ -223,14 +220,13 @@ function App() {
           )}
         />
         <Route
-          path="/profile/:edit"
+          path={Urls.PROFILE.EDIT}
           element={(
             <ProtectedRoute loggedIn={loggedIn}>
               <ProfileEdit handleUpdateUser={handleUpdateUser} />
             </ProtectedRoute>
           )}
         />
-
         <Route
           path={Urls.PASSWORD.EDIT}
           element={(
@@ -245,7 +241,6 @@ function App() {
             <PasswordNew handler={handleNewPassword} />
           )}
         />
-
         <Route
           path={Urls.SIGN.UP}
           element={(
@@ -270,7 +265,6 @@ function App() {
             <PasswordReset handler={handleResetPassword} />
           )}
         />
-
         <Route
           path="*"
           element={<PageNotFound />}
@@ -281,7 +275,7 @@ function App() {
         onClose={closePopup}
         text={textMessage}
       />
-    </CurrentUserContext.Provider>
+    </>
   );
 }
 

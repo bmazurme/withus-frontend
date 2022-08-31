@@ -19,7 +19,6 @@
 
 @media screen and (min-width: 100px) and (max-width: 479px) {
   .navigation__signin {
-    margin: 0;
     padding: 0;
     background: #fafafa;
     font-style: normal;
@@ -32,16 +31,12 @@
     opacity: 1;
     transition: opacity 0.5s ease;
     display: flex;
-    margin-bottom: 28px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0 0 28px;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .navigation__signin {
-    margin: 0;
     padding: 0;
     background: #fafafa;
     font-style: normal;
@@ -54,9 +49,6 @@
     opacity: 1;
     transition: opacity 0.5s ease;
     display: flex;
-    margin-bottom: 28px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0 0 28px;
   }
 }

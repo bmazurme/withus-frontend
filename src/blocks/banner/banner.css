@@ -1,5 +1,5 @@
 .banner {
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -7,7 +7,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  /* min-height: 60px; */
 }
 
 @media screen and (max-width: 319px) {

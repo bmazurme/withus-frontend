@@ -1,6 +1,5 @@
 .navigation__link {
-  margin: 0;
-  margin-right: 20px;
+  margin: 0 20px 0 0;
   padding: 0;
   font-style: normal;
   font-weight: 400;
@@ -20,19 +19,13 @@
 @media screen and (max-width: 319px) {
   .navigation__link {
     display: flex;
-    margin-bottom: 18px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0 0 18px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .navigation__link {
     display: flex;
-    margin-bottom: 28px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0 0 28px;
   }
 }

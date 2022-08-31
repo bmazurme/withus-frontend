@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Header from '../../components/Header/Header';
 import Field from '../../components/Field/Field';
 import Menu from '../../components/Menu/Menu';
+import { selectData } from '../../user/userSlice';
 import { IProfileProps } from '../../interfaces/interfaces';
 
 function Profile({ handleLogOut }: IProfileProps) {
-  const currentUser = useContext(CurrentUserContext);
-  const { name, email } = currentUser;
+  const { user } = useSelector(selectData);
+  const { name, email } = user;
+
   return (
     <>
       <Header />

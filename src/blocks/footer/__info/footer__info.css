@@ -5,9 +5,8 @@
   font-style: normal;
   font-weight: 400;
   text-align: right;
-  color: #000000;
-  margin: 0px;
-  margin-bottom: 20px;
+  color: #000;
+  margin: 0 0 20px;
   padding: 0;
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -17,8 +16,7 @@
 @media screen and (max-width: 319px) {
   .footer__info {
     flex-direction: column;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     padding: 0;
   }
 }
@@ -38,4 +36,3 @@
     align-items: center;
   }
 }
-
