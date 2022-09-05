@@ -3,7 +3,14 @@ import Card from '../Card/Card';
 
 function Cards() {
   return (
-    <Card />
+    <div className="cards">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
   );
 }
 

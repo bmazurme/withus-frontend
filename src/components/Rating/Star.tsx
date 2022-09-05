@@ -23,7 +23,7 @@ function Star(props: IProps) {
       onClick={() => handleClick(id)}
       onPointerEnter={() => handleFocus(id)}
       onPointerLeave={handleUnFocus}
-      className={`rating__star ${active && 'rating__star_active'}`}
+      className={`rating__star${active ? ' rating__star_active' : ''}`}
     />
   );
 }

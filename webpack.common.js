@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,7 +11,13 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.svg'],
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      Components: path.resolve(__dirname, './src/components/'),
+      Pages: path.resolve(__dirname, '.src/pages/'),
+      Interfaces: path.resolve(__dirname, '.src/interfaces'),
+      Utils: path.resolve(__dirname, './src/utils/'),
+    },
   },
   module: {
     rules: [
@@ -20,7 +27,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpg|gif|woff2|woff(2)?|eot|ttf|otf|ico)$/,
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf|ico)$/,
         type: 'asset/resource',
       },
       {
@@ -32,8 +39,7 @@ module.exports = {
             importLoaders: 1,
           },
         },
-        'postcss-loader',
-        ],
+        'postcss-loader'],
       },
     ],
   },
@@ -43,12 +49,4 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    historyApiFallback: true,
-    compress: true,
-    port: 3000,
-  },
 };

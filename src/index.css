@@ -105,7 +105,22 @@
 @import "./blocks/headermenu/headermenu.css";
 @import "./blocks/headermenu/__link/headermenu__link.css";
 
+/* cards */
+@import "./blocks/cards/cards.css";
+/* card */
 @import "./blocks/card/card.css";
+@import "./blocks/card/__container/card__container.css";
 @import "./blocks/card/__image/card__image.css";
 @import "./blocks/card/__title/card__title.css";
 @import "./blocks/card/__description/card__description.css";
+
+@import "./blocks/rating/rating.css";
+@import "./blocks/rating/__star/rating__star.css";
+@import "./blocks/rating/__star/_active/rating__star_active.css";
+
+@import "./blocks/privacy/__container/privacy__container.css";
+@import "./blocks/privacy/__text/privacy__text.css";
+@import "./blocks/privacy/__title/privacy__title.css";
+
+@import "./blocks/about/about.css";
+@import "./blocks/about/__text/about__text.css";

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
-import Techs from './Techs';
+// import Techs from './Techs';
 import Footer from '../../components/Footer/Footer';
 import Banner from '../../components/Banner/Banner';
 import HeaderMenu from '../../components/HeaderMenu/HeaderMenu';
@@ -11,7 +11,7 @@ function Main() {
     <>
       <Header />
       <HeaderMenu />
-      <Techs />
+      {/* <Techs /> */}
       <Cards />
       <Footer />
       <Banner />

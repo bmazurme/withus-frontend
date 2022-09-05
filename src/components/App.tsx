@@ -6,6 +6,8 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import About from '../pages/About/About';
+import Privacy from '../pages/Privacy/Privacy';
 import { setUserData } from '../user/userSlice';
 
 import auth from '../utils/authApi';
@@ -264,6 +266,14 @@ function App() {
           element={(
             <PasswordReset handler={handleResetPassword} />
           )}
+        />
+        <Route
+          path={Urls.MAIN.ABOUT}
+          element={(<About />)}
+        />
+        <Route
+          path={Urls.MAIN.PRIVATE}
+          element={(<Privacy />)}
         />
         <Route
           path="*"
