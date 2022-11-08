@@ -1,7 +1,0 @@
-.navigation__button_open {
-  background-image: url("../../../../images/close.svg");
-  align-items: flex-end;
-  align-self: flex-end;
-  right: 30px;
-  z-index: 1000;
-}

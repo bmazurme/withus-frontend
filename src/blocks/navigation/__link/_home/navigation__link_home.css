@@ -1,9 +1,0 @@
-.navigation__link_home {
-  display: none;
-}
-
-@media screen and (min-width: 100px) and (max-width: 768px) {
-  .navigation__link_home {
-    display: flex;
-  }
-}
