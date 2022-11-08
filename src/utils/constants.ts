@@ -7,6 +7,10 @@ export const Urls = {
     ABOUT: '/about',
     PRIVATE: '/private',
   },
+  OAUTH: {
+    INDEX: '/verification_code',
+    YANDEX: 'https://oauth.yandex.ru/',
+  },
   SIGN: {
     IN: '/signin',
     UP: '/signup',

@@ -22,6 +22,8 @@ import PasswordNew from '../pages/password/PasswordNew';
 import Main from '../pages/Main/Main';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import SignConfirm from '../pages/Sign/SignConfirm';
+import Oauth from '../pages/Sign/Oauth';
+
 import ProtectedRoute from './ProtectedRoute';
 import Popup from './Popup/Popup';
 import Preloader from './Preloader/Preloader';
@@ -259,6 +261,12 @@ function App() {
           path={Urls.SIGN.CONFIRM}
           element={(
             <SignConfirm navigate={navigate} />
+          )}
+        />
+        <Route
+          path={Urls.OAUTH.INDEX}
+          element={(
+            <Oauth navigate={navigate} />
           )}
         />
         <Route

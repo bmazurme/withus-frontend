@@ -1,9 +1,12 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
+// import { NavLink } from 'react-router-dom';
+
 import Button from '../../components/Button/Button';
 import Inbox from '../../components/Inbox/Inbox';
 import Logo from '../../components/Logo/Logo';
 import SignFooter from './SignFooter';
+
 import useFormWithValidation from '../../utils/validator';
 import { EMAIL_REGEXP, Urls } from '../../utils/constants';
 import { IValid, ISignProps } from '../../interfaces/interfaces';
@@ -18,12 +21,17 @@ function Signup({ handleSign }: ISignProps) {
 
   const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
+
     handleSign({
       email: values.email,
       password: values.password,
       name: values.name,
     });
   };
+
+  const CLIENT_ID = 'f88ff45c97e54e15a0c703325889f4b8';
+  const REDIRECT_URI = 'http://localhost:3000/verification_code';
+  const OAUTH_URL = `https://oauth.yandex.ru/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
 
   return (
     <section className="sign">
@@ -103,6 +111,12 @@ function Signup({ handleSign }: ISignProps) {
             label: 'SignIn',
           }}
         />
+        <a
+          className="sign__link"
+          href={OAUTH_URL}
+        >
+          OAUTH
+        </a>
       </div>
     </section>
   );
