@@ -44,14 +44,14 @@ export class OAuth {
     myHeaders.append('Authorization', 'OAuth y0_AgAAAAABpMU3AAiKnQAAAADSuBfef6pw1J8ARFGEugCSPwtPa_7dOpc');
     // myHeaders.append('Cookie', 'yandexuid=738317271667162136');
 
-    myHeaders.append('Access-Control-Allow-Origin', '*');
-    myHeaders.append('Access-Control-Allow-Headers', 'Content-Type');
+    myHeaders.append('Access-Control-Allow-Origin', 'http://localhost:3000'); // Access-Control-Allow-Origin: *
+    // myHeaders.append('Access-Control-Allow-Headers', 'Content-Type');
 
     const res = await fetch('https://login.yandex.ru/info', {
       // mode: 'no-cors',
       method: 'GET',
       headers: myHeaders,
-      referrerPolicy: 'no-referrer',
+      // referrerPolicy: 'no-referrer',
       // redirect: 'follow',
     });
 
